@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% block head %}
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+{% block title %}
+Index
+{% endblock %}
+{% block body %}
+<div class="w-100 h-100 d-flex">
+    <div class="h-100  d-inline-block" style="border-right:1px solid lightgrey; width: 20%;">
+        <h5 class="gradient-head p-3 text-center">List of Experiments</h5>
+        <div class="scroll-menu" style="max-height: 80vh;height: 80vh;">
+
+
+
+            <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
+
+                <div class="accordion-item">
+                    <p class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Sorting Algorithms
+                        </button>
+                    </p>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a onclick="showPreview(event)">Insertion Sort</a></li>
+                                <li class="list-group-item"><a onclick="showPreview(event)">Selection Sort</a></li>
+                                <li class="list-group-item"><a onclick="showPreview(event)">Bubble Sort</a></li>
+                                <li class="list-group-item"><a onclick="showPreview(event)">Radix Sort</a></li>
+                                <li class="list-group-item"><a onclick="showPreview(event)">Quick Sort</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <p class="accordion-header" id="flush-headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Searching Algoritms
+                        </button>
+                    </p>
+                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a onclick="showPreview(event)">Linear Search</a></li>
+                                <li class="list-group-item"><a onclick="showPreview(event)">Binary Search</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <p class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseThree" aria-expanded="false"
+                            aria-controls="flush-collapseThree">
+                            Process Scheduling Algorithms
+                        </button>
+                    </p>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse"
+                        aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a id="exp1" onclick="showPreview(event)">FCFS</a></li>
+                                <li class="list-group-item"><a id="exp2" onclick="showPreview(event)">Round Robin</a></li>
+                                <li class="list-group-item"><a id="exp3" onclick="showPreview(event)">LRU</a></li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <hr>
+    <div class="w-50 border-success scroll-menu" style="max-height: 80vh;height: 80vh; margin-left: 10%;">
+        <div class="" id="preview" style="padding: 70px 10px">
+            <div class="alert alert-primary text-center">select experiment to show preview.</div>
+           
+
+        </div>
+    </div>
+</div>
+
+<script>
+   function showPreview(e){
+       item_id = e.target.id
+       console.log(item_id)
+       document.getElementById("preview").innerHTML = 
+           `<h5 class="text-center my-4">${e.target.innerText}</h5>
+           <p>Insertion sort is one of the sorting algorithms. To sort the elements in array in ascending or descending Insertion sort can be used.<br>
+Principle of Insertion Sort<br>
+The array is divided in two parts (not actually) left part is sorted and right part is unsorted. <br>By Iterating from left to right and moving our line which divides to right we make whole array sorted.</p>
+           <a class="btn1 badge mt-5 offset-7" href="/expt" >Start Experiment ></a>`
+   }
+</script>
+
+{% endblock %}
