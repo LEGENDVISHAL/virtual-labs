@@ -5,6 +5,16 @@ Experiment
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/expt_layout.css') }}">
 <link rel="stylesheet" href=" {{ url_for('static', filename='css/markdown.css') }}">
+
+<style>
+    .CodeMirror {
+      height: 300px;
+      font-size: 15px;
+      white-space: pre;
+      padding: 5px;
+    }
+</style>
+
 {% endblock head %}
 {% block body %}
 <h4 class=" text-center pt-2">{% block expt_title %}
@@ -35,15 +45,15 @@ Experiment
                         <li class="list-group-item">topic 2</li>
                         </ul> -->
                 {% block toc %}
-    
+
                 {% endblock toc %}
             </div>
         </div>
-    
+
        <div class="container-fluid scroll-menu" style="max-height: 75vh;height: 75vh; ">
         <div class="" style="margin: 2% 5% 0% 5%;" >
             {% block Theory %}
-        
+
             {% endblock Theory %}
             </div>
        </div>
