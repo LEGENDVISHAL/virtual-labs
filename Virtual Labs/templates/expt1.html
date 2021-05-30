@@ -157,6 +157,26 @@
 
 {% endblock Theory %}
 
+
+
+{% block Analysis %}
+<div class="mcq-container">
+    <template class="my-3" id="mcq-template">
+        <div class="my-3">
+            <img class="img-fluid w-50 rounded" id="mcq-image" src="" alt="Question Image" />
+        </div>
+
+        <div class="heading1 mb-2" id="mcq-question" >What is the name of Mercury?</div>
+        <div class="option-group" id="mcq-options">
+            {% for i in range(4) %}
+                    <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+            {% endfor %}
+        </div>
+    <hr />
+    </template>
+</div>
+{% endblock Analysis %}
+
 {% block CodeArena %}
 <div class="template-container">
 </div>
@@ -207,8 +227,29 @@
 </template>
 <div class="certificate container p-5"></div>
 
-
 <script>
+    let mcqs = [
+        {
+            "question": "What is the name of Mercury?",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
+            "options": [
+                "Mercury",
+                "Earth",
+                "Abhay",
+                "Amey"
+            ]
+        },
+        {
+            "question": "Karandak kon jeeta?",
+            "image": "",
+            "options": [
+                "COMP",
+                "MECH",
+                "INSTRU",
+                "CHEM"
+            ]
+        }
+    ];
     let problems = [
         {
             "title": "Addition of 3 numbers",
@@ -224,6 +265,7 @@
         },
     ];
 </script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
 
 {% endblock CodeArena %}
