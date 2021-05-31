@@ -18,9 +18,9 @@ for (let mcq of mcqs) {
     for (let idx = 0; idx < mcq["options"].length; idx++) {
         let option = mcq["options"][idx];
         if (idx == 0)
-            options.push(`<button type="button" class="btn gradient-head border btn-sm mx-1 correct" onclick="showAnswer(this)">${option}</button>`);
+            options.push(`<button type="button" class="btn border btn-sm mx-1 correct" onclick="showAnswer(this)">${option}</button>`);
         else
-            options.push(`<button type="button" class="btn gradient-head border btn-sm mx-1" onclick="showAnswer(this)">${option}</button>`);
+            options.push(`<button type="button" class="btn border btn-sm mx-1" onclick="showAnswer(this)">${option}</button>`);
     }
 
     options = options.sort(() => Math.random() - 0.5);

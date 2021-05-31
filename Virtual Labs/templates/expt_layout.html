@@ -64,15 +64,21 @@ Experiment
 
     {% endblock Simulation %}
 </div>
-<div class="tabcontent container" id="analysis">
+<div class="tabcontent container-fluid scroll-menu" id="analysis"  style="max-height: 75vh;height: 75vh; ">
+    <div class="container">
+        <div class="" style="margin: 2% 5% 0% 5%;" >
     {% block Analysis %}
 
     {% endblock Analysis %}
+    </div>
+    </div>
 </div>
-<div class="tabcontent container" id="code_arena">
-    {% block CodeArena %}
+<div class="tabcontent container-fluid scroll-menu" id="code_arena" style="max-height: 75vh;height: 75vh; ">
+    <div class="container">
+        {% block CodeArena %}
 
     {% endblock CodeArena %}
+    </div>
 </div>
 
 

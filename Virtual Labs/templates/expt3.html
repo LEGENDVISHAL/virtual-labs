@@ -1,0 +1,267 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Constructors And Destructors{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#Key Points" class="list-group-item">2. Key Points :</a>
+    <a href="#types" class="list-group-item">3. Types Of Constructors</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#default_cons" class="list-group-item">3.1 Default Constructor</a>
+        <a href="#para_cons" class="list-group-item">3.2 Parameterized Constructor</a>
+        <a href="#copy_cons" class="list-group-item">3.3 Copy Constructor</a>
+    </div>
+    <a href="#example" class="list-group-item">4. Example</a>
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+<p class="heading1" id="intro">Introduction</p>
+
+<p class="para">Constructors are the special methods that are called or invoked automatically when the object
+    of the class is created.</p>
+
+<p class="heading1" id="Key Points">Key Points:</p>
+
+<p class="para">Name of the constructor should be same as name of the class.
+    <br>
+    Constructors are always Public.
+    <br>
+    Constructors does not have any return type. <br>
+</p>
+
+<p class="heading1" id="types">Types Of Constructors</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt3/img1.png') }}" alt="img2">
+<br>
+<br>
+
+
+
+   <p class="heading1">1. Default Constructors :</p>     
+<p class="para"> Basically Default constructors does <span class="imp">not have any parameters</span></p>
+    <br>
+
+
+    <p class="para">Let see this with an Example.</p>
+    <br><br>
+
+<p class="heading1" id="example">Example</p>
+<p class="para">1.Here we are declared one class named as Student. <br><br>
+    2.In that class we created a default constructor, same name as class i.e <span class="code">Student()</span> <br><br>
+    3. In Main function first we created the object <span class="code">s1</span> of class Student and as soon as we create the object constructor
+    will be called and
+    we will get a respected output. <br></p>
+
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student
+    {
+    public:
+        Student()
+        {
+            cout &lt;&lt; &quot;Welcome to Virtual Lab&quot;;
+        }
+    };
+    
+    int main()
+    {
+        Student s1;
+        return 0;
+    }</code></pre>
+
+
+<br>
+<br>
+
+
+<p class="para"><b>
+        <h2>2. Parameterized Constructors :</h2>>
+    </b> In Parameterized constructor we pass an arguments to it.
+
+    <br> <br>
+
+    Let see the example of Parameterized Constructor.
+    <br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1.Here we are declared one class named as Student.and here we are taken two variables a and b which are
+    public. <br>
+    2.In that class we created one parameterized constructor, same name as class i.e Student(). and it will take to
+    arguments which are int type.<br>
+    3.In main function we created object of class Student and pass two integers to it as its a parameterized
+    constructors.and below we simply printed the values. </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student
+    {
+        public:
+            int a,b;
+    
+        Student(int x,int y)
+        {
+            a=x;
+            b=y;
+        }
+    
+       
+    };
+    
+    int main()
+    {
+        Student s1(5,10);
+        cout&lt;&lt;s1.a&lt;&lt;&quot; &quot;&lt;&lt;s1.b&lt;&lt;endl;
+        return 0;
+    }</code></pre>
+
+<br>
+<br>
+
+
+<p class="para"><b>
+        <h2>3. Copy Constructors:</h2>>
+    </b> Copy constructor is also a member function of class basically it initialize the
+    object of class with the help of another object of same class.
+
+    <br>
+
+
+    Let see the example of Copy Constructor.
+    <br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1.Here we are declared one class named as Student. and declared one variable named as Marks. <br>
+    2.In that class we created a Parameterized constructor, same name as class i.e Student(). and it will take one
+    parameter of type integer. <br>
+    3.Below that we create a one copy constructor.
+    4.In main function we created one object s1 of class Student and passed 100 value as paremeter after that we called
+    the copy constructor and pass old object
+    i.e s1 to that copy constructor. </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student(int m1)            // Parameterized Constructor
+        {
+            marks = m1;
+        }
+    
+        Student(Student &amp;m2)      //  Copy Constructor
+        {
+            marks = m2.marks;
+        }
+    };
+    
+    int main()
+    {
+        Student s1(100);        //    Calling Parameterized Constructor
+        Student s2(s1);         //    Calling Copy Constructor
+    
+        cout &lt;&lt; s1.marks &lt;&lt; endl;
+        cout &lt;&lt; s2.marks &lt;&lt; endl;
+        return 0;
+    }
+    
+     </code></pre>
+
+<br>
+<br>
+
+<p class="para"><b>
+        <h2>4.Destructors :</h2>>
+    </b> Destructor is also a member function which destructs the objects of the class. <br>
+    <b>Syntax of Destructor:</b> ~Constructor Name()
+
+    <br>
+<p class="heading1" id="Key Points">Key Points:</p>
+Destructors have same name as class but we have to place tild sign (~) before it.
+Destructors are automatically called when the objects is destroyed. <br>
+Destructors does not have any return type. <br>
+Destructors does not take any arguments. <br>
+Destructors can not be declared statics or const. <br>
+Basically
+<br>
+
+
+Let see the example of Copy Constructor.
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1.Here we are declared one class named as Student. and declared one variable named as Marks. <br>
+    2.In that class we created a Parameterized constructor, same name as class i.e Student(). <br>
+    3.Below that we create a one Destructor.
+    4.In main function we created one object s1 of class Student as soon as we created the object, constructor is
+    automatically invoked
+    and after that below Destructor will be invoked. <br>
+    5. We are kept printing statements in cnstructors and destructors to understand the execution of given constructors
+    and destructors.
+
+
+
+</p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >
+    #include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student                                       // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student()                                            // Constructor Created 
+        {
+            cout&lt;&lt;&quot;Constructor Called Here&quot;&lt;&lt;endl;
+        }
+        
+        ~Student()                                          //  Destructor Created
+        {
+            cout&lt;&lt;&quot;Destructor Called Here&quot;&lt;&lt;endl;          
+        }
+    
+        
+    };
+    
+    int main()
+    {
+        Student s1;     // creating object
+        return 0;
+    }
+    
+     </code></pre>
+
+<br>
+<br>
+
+
+
+{% endblock Theory %}

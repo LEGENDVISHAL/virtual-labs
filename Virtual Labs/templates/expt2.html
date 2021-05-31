@@ -1,0 +1,289 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Class and Object in OOPS{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#class" class="list-group-item">2. Class</a>
+    <a href="#object" class="list-group-item">3. Object</a>
+    <a href="#datam" class="list-group-item">4. Data Members</a>
+    <a href="#accesss" class="list-group-item">5. Access Speciiers</a>
+    <a href="#memberf" class="list-group-item">6. Members Functions</a>
+    <a href="#implement" class="list-group-item">7. Implementation</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#cpp_imple" class="list-group-item">7.1 C++ Implementation</a>
+        <a href="#python_imple" class="list-group-item">7.2 Python Implementation</a>
+    </div>
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+
+<p class="heading1" id="intro">Introduction</p>
+<p class="para">Classes and objects are the basic building blocks of object-oriented programming. <br>
+    Earlier structures are used to define user-defined data types in the C language. <br>
+    For example, to represent a complex number, structure of real number and the imaginary number is made. Functions for operations on complex number are written separately.&nbsp;<br>
+    So to make things easier and keep related code in some wrapper. So Object-oriented programming came into the picture in which class is the same as structure but with more advanced features.</p>
+
+
+<p class="heading1" id="class">Class</p>
+<p class="para">Class is similar to structure in C. It is a user-defined data type. <br>
+    Functions that are related to this data type are wrapped in class and called methods that can access and modify variables without passing as parameters.&nbsp;<br>
+    A class is nothing but a user-defined blueprint from which objects are created.</p>
+
+
+<p class="heading1" id="object">Object</p>
+<p class="para">
+    The object is an instance of a class. Think class similar to data type and object similar to a variable of that data type.<br>
+Objects have attributes and properties in the class defined. Many objects can be created by the same class.<br>
+When an object of a class is created, the class is said to be instantiated.
+</p>
+
+<p class="heading1" id="datam">Data Members</p>
+<p class="para">
+    Data Members are members that are declared with any of the fundamental types, eg. int, char, float, double, etc., as well as other types, including pointer, reference, array types, bit fields, and user-defined types. <br> Basically, variables defined in class are called data members.
+</p>
+
+<p class="heading1" id="accesss">Access Specifiers</p>
+<p class="para">
+    Access Specifiers define how data members or member functions should be accessed from the main function or within the member function. <br> 
+    There are 3 types of access specifiers.<br>
+1. private: Private members can only be accessed from within the class and friend classes and friend functions.&nbsp;<br>
+2. protected: Protected members can be accessed within the class and from the derived class.<br>
+3. public: Public members are accessible from any part of the program.
+</p>
+
+<p class="heading1" id="memberf">Member Functions</p>
+<p class="para">
+    Member functions are functions that are defined within the scope of the class. Operators are also member functions.<br>
+The data members and member functions of the class can be accessed using the dot('.') operator with the object.
+</p>
+
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt1/img1.png') }}" alt="img1">
+
+<p class="heading1" id="implement">Implementation of Class and Object</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    // class complex
+    class Complex
+    {
+        // access specifier
+        public:
+    
+        // data members
+        int real,imag;
+    
+        // member functions
+        // constructor
+        Complex() {}
+        Complex(int r, int i)
+        {
+            real = r;
+            imag = i;
+        }
+    
+        void display()
+        {
+            if(imag&lt;0)
+            {
+                cout&lt;&lt;real&lt;&lt;&quot; -i&quot;&lt;&lt;abs(imag)&lt;&lt;endl;
+            }
+            else
+            {
+                cout&lt;&lt;real&lt;&lt;&quot; +i&quot;&lt;&lt;imag&lt;&lt;endl;
+            }
+        }
+    
+    };
+    
+    int main()
+    {
+        // declaration of object
+        Complex obj1(3,5);
+    
+        // accessing member function
+        obj1.display();
+    
+        // accessing data member
+        obj1.real = 4;
+    
+        // accessing member function after modifying data member
+        obj1.display();
+        
+        return 0;
+    }</code></pre>
+
+
+<p class="heading2" id="python_imple">Python implementation</p>
+<pre><code class="language-python center">
+    # class Complex
+    class Complex:
+        # constructor
+        def __init__(self, r=0, i=0):
+            self.real = r
+            self.imag = i
+
+        # member function - display
+        def display(self):
+            if self.imag&lt;0:
+                print(f'{self.real} - i{abs(self.imag)}')
+            else:
+                print(f'{self.real} + i{self.imag}')
+
+
+        # member function - increment
+        def increment(self):
+            self.real+=1
+            self.imag+=1
+
+    # main 
+
+    # Complex object
+    obj1 = Complex(2, 3)
+
+    # Call display() method
+    # Output: 2+i3
+    obj1.display()
+
+    obj1.increment()
+
+    # Output: 3+i4
+    obj1.display()
+
+</code></pre>
+
+{% endblock Theory %}
+
+
+
+{% block Analysis %}
+<div class="mcq-container">
+    <template class="my-3" id="mcq-template">
+        <div class="my-3">
+            <img class="img-fluid w-50 rounded" id="mcq-image" src="" alt="Question Image" />
+        </div>
+
+        <div class="heading1 mb-2" id="mcq-question" >What is the name of Mercury?</div>
+        <div class="option-group" id="mcq-options">
+            {% for i in range(4) %}
+                    <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+            {% endfor %}
+        </div>
+    <hr />
+    </template>
+</div>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre></pre>
+                    </div>
+                    <pre id="code-question-summary"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let mcqs = [
+        {
+            "question": "What is worst case time complexity of insertion sort?",
+            "image": "",
+            "options": [
+                // answer O(NlogN)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(2<sup>N<sup>)"
+            ]
+        },
+        {
+            "question": "What is the running time of an insertion sort algorithm if the input is pre-sorted?",
+            "image": "",
+            "options": [
+                // answer O(N)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(MlogN)"
+            ]
+        },
+        {
+            "question": "Which of the following real time examples is based on insertion sort? ",
+            "image": "",
+            "options": [
+                // answer arranging a pack of playing cards
+                "arranging a pack of playing cards",
+                "database scenarios and distributes scenarios",
+                "arranging books on a library shelf","O(MlogN)",
+                "real-time systems"
+            ]
+        },
+        {
+            "question": "Which of the following options contain the correct feature of an insertion sort algorithm?",
+            "image": "",
+            "options": [
+                // answer stable, adaptive
+                "anti-adaptive",
+                "dependable",
+                "stable, not in-place",
+                "stable, adaptive"
+            ]
+        },
+        {
+            "question": "What will be the number of passes to sort the elements using insertion sort? 14, 12,16, 6, 3, 10",
+            "image": "",
+            "options": [
+                // answer 5
+                "6","5","7","1"
+            ]
+        }
+    ];
+    let problems = [
+        
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+
+{% endblock CodeArena %}
