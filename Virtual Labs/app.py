@@ -13,7 +13,7 @@ def index():
 
 @app.route('/expt')
 def expt():
-    return render_template("expt5.html")
+    return render_template("expt6.html")
 
 if __name__ == '__main__':
     app.run(debug=True, port=port)
