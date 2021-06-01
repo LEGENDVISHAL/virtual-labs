@@ -1,0 +1,237 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Inheritance{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#needi" class="list-group-item">2. Need of Inheritance</a>
+    <a href="#modei" class="list-group-item">3. Modes of Inheritance</a>
+    <a href="#typei" class="list-group-item">4. Types of Inheritance</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#singlei" class="list-group-item">4.1 Single Inheritance</a>
+        <a href="#multiplei" class="list-group-item">4.2 Multiple Inheritance</a>
+        <a href="#hieri" class="list-group-item">4.3 Hierarchical Inheritance</a>
+        <a href="#multilvli" class="list-group-item">4.4 Multilevel Inheritance</a>
+        <a href="#hybridi" class="list-group-item">4.5 Hybrid Inheritance</a>
+    </div>
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+
+<p class="heading1" id="intro">Introduction</p>
+<p class="para">The capability of a class to derive properties and characteristics from another class is called <span class="imp">Inheritance</span>. It is one of the most important feature of Object Oriented Programming. One of the pillar of OOPS. <br> <br>
+    <b>Child or Sub or Derived class</b> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
+    <b>Parent or Super or Base Class</b> : The class whose properties are inherited by sub class is called Base Class or Super class.
+</p>
+
+<p class="heading1" id="needi">Need of Inheritance</p>
+<p class="para">
+    Inheritance is used to declare characteristics of classes inheriting it,without giving its implementation.
+    <br><br>
+    The most important advantage of inheritance is code reusability.
+</p>
+
+
+<p class="heading1" id="modi">Modes of Inheritance</p>
+<p class="para">
+    1. <b>Public mode</b>: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
+    <br><br>
+    2. <b>Protected mode</b>: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
+    <br><br>
+    3. <b>Private mode</b>: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
+    <br><br>
+    Note : The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed.
+    
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/inheritance.png') }}" alt="img1">
+
+<p class="heading1" id="typei">Types of Inheritance</p>
+<p class="para">
+    There are five types of inheritance.
+    <br> <br>
+    1. Single inheritance. <br>
+    2. Multiple inheritance. <br>
+    3. Hierarchical Inheritance. <br>
+    4. Multi-level inheritance. <br>
+    5. Hybrid Inheritance.
+</p>
+
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/types_of_i.png') }}" alt="img1">
+
+<p class="heading2" id="singlei">1. Single Inheritance</p>
+<p class="para">
+    Single Inheritance enables a derived class to inherit properties and behavior from single parent class. <br>
+    One sub class is inherited by one base class only.
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/single_i.png') }}" alt="img1">
+
+<p class="heading2" id="multiplei">2. Multiple Inheritance</p>
+<p class="para">
+    When a subclass inherits from multiple base classes, it is known as Multiple Inheritance.
+    <br><br>
+    For example: Amphibians is derived from Terrestrial and Aquatic animals. 
+    <br>
+    Frog can survive on land as well as water. <br><br>
+
+    If the derived class need to access one of the same named member function of the base classes then it results in <span class="imp">ambiguity.</span> <br>
+    Ambiguity can be reolved by using scope resolution operator or using virtual base class. <br><br>
+
+    Note: Java <b>doesn't support</b> multiple inheritance.
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/multiple_i.png') }}" alt="img1">
+
+<p class="heading2" id="hieri">3. Hierarchical Inheritance</p>
+<p class="para">
+    If more than one class is inherited from the base class, it’s known as hierarchical inheritance. <br><br>
+    For example: Primary and Secondary colors are derived from Color base class.
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/hier_i.png') }}" alt="img1">
+
+<p class="heading2" id="multilvli">4. Multilevel Inheritance</p>
+<p class="para">
+    It is implemented by defining at least three classes. <br><br>
+    In Multilevel Inheritance, there is one base class and other two are derived class.
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/multilvl_i.png') }}" alt="img1">
+
+<p class="heading2" id="hybridi">5. Hybrid Inheritance</p>
+<p class="para">
+    Inheritance hierarchy that reflects any legal combination of other four types of inheritance. <br><br>
+    For example: Hierarchical inheritance + Multiple Inheritance
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/hybrid_i.png') }}" alt="img1">
+
+{% endblock Theory %}
+
+
+
+{% block Analysis %}
+<div class="mcq-container">
+    <template class="my-3" id="mcq-template">
+        <div class="my-3">
+            <img class="img-fluid w-50 rounded" id="mcq-image" src="" alt="Question Image" />
+        </div>
+
+        <div class="heading1 mb-2" id="mcq-question" >What is the name of Mercury?</div>
+        <div class="option-group" id="mcq-options">
+            {% for i in range(4) %}
+                    <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+            {% endfor %}
+        </div>
+    <hr />
+    </template>
+</div>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre></pre>
+                    </div>
+                    <pre id="code-question-summary"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let mcqs = [
+        {
+            "question": "What is worst case time complexity of insertion sort?",
+            "image": "",
+            "options": [
+                // answer O(NlogN)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(2<sup>N<sup>)"
+            ]
+        },
+        {
+            "question": "What is the running time of an insertion sort algorithm if the input is pre-sorted?",
+            "image": "",
+            "options": [
+                // answer O(N)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(MlogN)"
+            ]
+        },
+        {
+            "question": "Which of the following real time examples is based on insertion sort? ",
+            "image": "",
+            "options": [
+                // answer arranging a pack of playing cards
+                "arranging a pack of playing cards",
+                "database scenarios and distributes scenarios",
+                "arranging books on a library shelf","O(MlogN)",
+                "real-time systems"
+            ]
+        },
+        {
+            "question": "Which of the following options contain the correct feature of an insertion sort algorithm?",
+            "image": "",
+            "options": [
+                // answer stable, adaptive
+                "anti-adaptive",
+                "dependable",
+                "stable, not in-place",
+                "stable, adaptive"
+            ]
+        },
+        {
+            "question": "What will be the number of passes to sort the elements using insertion sort? 14, 12,16, 6, 3, 10",
+            "image": "",
+            "options": [
+                // answer 5
+                "6","5","7","1"
+            ]
+        }
+    ];
+    let problems = [
+        
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+
+{% endblock CodeArena %}
