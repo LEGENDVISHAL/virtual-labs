@@ -22,17 +22,18 @@
 <script>hljs.highlightAll();</script>
 <p class="heading1" id="intro">Introduction</p>
 
-<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in ascending or
-    descending Insertion sort can be used.</p>
+<p class="para">
+    Insertion sort is one of the sorting algorithms. <br><br>
+    To sort the elements in array in ascending or descending Insertion sort can be used
+</p>
+
 
 <p class="heading1" id="principle">Principle of Insertion Sort</p>
-
-<p class="para">The array is divided in two parts <span class="italic">(not actually)</span> left part is sorted and
-    right part is unsorted. By Iterating from left to right and moving our line which divides to right we make whole
-    array sorted.</p>
+<p class="para">The array is divided in two parts <span class="italic">(not actually)</span> left part is sorted and right part is unsorted. <br><br>
+    By Iterating from left to right and moving our line which divides to right we make whole array sorted.
+</p>
 
 <p class="heading1" id="algo">Algorithm Steps</p>
-
 <p class="para">1. Iterate through array from index 1 to n-1 i.e. iterate whole array as 0th element is already sorted.
     <span class="italic">(0 base indexing)</span> <br><br>
     2. At each iteration check if current element is greater than previous element If it is, then current element is at
@@ -230,38 +231,64 @@
 <script>
     let mcqs = [
         {
-            "question": "What is the name of Mercury?",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
+            "question": "What is worst case time complexity of insertion sort?",
+            "image": "",
             "options": [
-                "Mercury",
-                "Earth",
-                "Abhay",
-                "Amey"
+                // answer O(NlogN)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(2<sup>N<sup>)"
             ]
         },
         {
-            "question": "Karandak kon jeeta?",
+            "question": "What is the running time of an insertion sort algorithm if the input is pre-sorted?",
             "image": "",
             "options": [
-                "COMP",
-                "MECH",
-                "INSTRU",
-                "CHEM"
+                // answer O(N)
+                "O(N<sup>2<sup>)","O(NlogN)","O(N)","O(MlogN)"
+            ]
+        },
+        {
+            "question": "Which of the following real time examples is based on insertion sort? ",
+            "image": "",
+            "options": [
+                // answer arranging a pack of playing cards
+                "arranging a pack of playing cards",
+                "database scenarios and distributes scenarios",
+                "arranging books on a library shelf","O(MlogN)",
+                "real-time systems"
+            ]
+        },
+        {
+            "question": "Which of the following options contain the correct feature of an insertion sort algorithm?",
+            "image": "",
+            "options": [
+                // answer stable, adaptive
+                "anti-adaptive",
+                "dependable",
+                "stable, not in-place",
+                "stable, adaptive"
+            ]
+        }
+        {
+            "question": "What will be the number of passes to sort the elements using insertion sort? 14, 12,16, 6, 3, 10",
+            "image": "",
+            "options": [
+                // answer 5
+                "6","5","7","1"
             ]
         }
     ];
     let problems = [
         {
-            "title": "Addition of 3 numbers",
-            "desc": "Addition of <b class='imp'>2 numbers</b>",
-            "inputs": ["1 2 3"],
-            "outputs": ["6"]
+            "title": "Sort the array using Insertion sort",
+            "desc": "You have given an array <i>A<i> of <i>n<i> integers.You have to sort the array and print it using insertion sort.",
+            "inputs": ["8 2 4 5 1 2 4 5 9"],
+            "outputs": ["1 2 2 4 4 5 5 9"]
         },
         {
-            "title": "Subtraction of 2 numbers",
-            "desc": "Subtraction of <b>2 numbers</b>",
-            "inputs": ["1 2"],
-            "outputs": ["-1"]
+            "title": "Find positon of each element in sorted array",
+            "desc": "You have been given an A array consisting of <i>n<i> integers. All the elements in this array are guaranteed to be <b>unique<b>. For each position i in the array <i>A<i> you need to find the position of <i>A[i]<i> should be present in, if the array was a sorted array. You need to find this for each <i>i<i> and print the resulting solution.",
+            "inputs": ["5 8 3 5 2 1"],
+            "outputs": ["5 3 4 2 1"]
         },
     ];
 </script>
