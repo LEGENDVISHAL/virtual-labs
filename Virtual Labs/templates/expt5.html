@@ -1,0 +1,309 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Inheritance in OOPS{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#needi" class="list-group-item">2. Need of Inheritance</a>
+    <a href="#modei" class="list-group-item">3. Modes of Inheritance</a>
+    <a href="#typei" class="list-group-item">4. Types of Inheritance</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#singlei" class="list-group-item">4.1 Single Inheritance</a>
+        <a href="#multiplei" class="list-group-item">4.2 Multiple Inheritance</a>
+        <a href="#hieri" class="list-group-item">4.3 Hierarchical Inheritance</a>
+        <a href="#multilvli" class="list-group-item">4.4 Multilevel Inheritance</a>
+        <a href="#hybridi" class="list-group-item">4.5 Hybrid Inheritance</a>
+    </div>
+</div>
+
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+
+<p class="heading1" id="intro">Introduction</p>
+<p class="para">The capability of a class to derive properties and characteristics from another class is called <span class="imp">Inheritance</span>. It is one of the most important feature of Object Oriented Programming. One of the pillar of OOPS. <br> <br>
+    <span class="imp">Child or Sub or Derived class</span> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
+    <span class="imp">Parent or Super or Base Class</span> : The class whose properties are inherited by sub class is called Base Class or Super class.
+</p>
+
+<p class="heading1" id="needi">Need of Inheritance</p>
+<p class="para">
+    Inheritance is used to declare characteristics of classes inheriting it,<span class ="imp"> without giving its implementation</span>.
+    <br><br>
+    The most important advantage of inheritance is <span class="imp">code reusability.</span>
+</p>
+
+
+<p class="heading1" id="modei">Modes of Inheritance</p>
+<p class="para">
+    <span class="imp">1. Public mode</span>: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
+    <br><br>
+    <span class="imp">2. Protected mode</span> If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
+    <br><br>
+    <span class="imp">3. Private mode</span> If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
+    <br><br>
+    Note : The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed.
+</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/inheritance.png') }}" alt="img1">
+
+<p class="heading1" id="typei">Types of Inheritance</p>
+<p class="para">
+    There are five types of inheritance.
+    <br> <br>
+    1. <span class="heading2">Single inheritance. </span><br>
+    2. <span class="heading2">Multiple inheritance. </span><br>
+    3. <span class="heading2">Hierarchical Inheritance. </span><br>
+    4. <span class="heading2">Multi-level inheritance. </span><br>
+    5. <span class="heading2">Hybrid Inheritance.</span>
+</p>
+
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/types_of_i.png') }}" alt="img1">
+
+<p class="heading2" id="singlei">1. Single Inheritance</p>
+<p class="para">
+    <span class="imp">Single Inheritance</span> enables a derived class to inherit properties and behavior from single parent class. <br>
+    <span class="code">One sub class</span> is inherited by <span class="code">one base class only.</span>
+</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/single_i.png') }}" alt="img1">
+
+<p class="heading2" id="multiplei">2. Multiple Inheritance</p>
+<p class="para">
+    When a subclass inherits from <span class="code">multiple base classes</span>, it is known as <span class="imp">Multiple Inheritance.</span>
+    <br><br>
+    For example: <span class="code">Amphibians</span> is derived from Terrestrial and Aquatic animals. 
+    <br>
+    Frog can survive on land as well as water. <br><br>
+
+    If the derived class need to access one of the same named member function of the base classes then it results in <span class="imp">ambiguity.</span> <br>
+    Ambiguity can be reolved by using <span class="code">scope resolution operator</span> or using <span class="code">virtual base class.</span> <br><br>
+
+    Note: Java <span class="code">doesn't support</span> multiple inheritance.
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/multiple_i.png') }}" alt="img1">
+
+<p class="heading2" id="hieri">3. Hierarchical Inheritance</p>
+<p class="para">
+    If <span class="code">more than one class</span> is inherited from the base class, it’s known as <span class="imp">Hierarchical inheritance.</span> <br><br>
+    For example: Primary and Secondary colors are derived from Color base class.
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/hier_i.png') }}" alt="img1">
+
+<p class="heading2" id="multilvli">4. Multilevel Inheritance</p>
+<p class="para">
+    It is implemented by defining <span class="code">at least three classes.</span> <br><br>
+    In <span class="imp">Multilevel Inheritance</span>, there is one base class and other two are derived class.
+</p>
+<img class="img-xsm d-flex center" src="{{ url_for('static', filename='img/expt5/multilvl_i.png') }}" alt="img1">
+
+<p class="heading2" id="hybridi">5. Hybrid Inheritance</p>
+<p class="para">
+    <span class="imp">Hierarchical Inheritance</span> reflects any legal <span class="code">combination</span> of other four types of inheritance. <br><br>
+    For example: Hierarchical inheritance + Multiple Inheritance
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/hybrid_i.png') }}" alt="img1">
+
+{% endblock Theory %}
+
+{% block Simulation %}
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
+{% endblock Simulation %}
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple my-3" id="mcq-question" >What is the name of Mercury?</div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+<script>
+    let mcqs = [
+        {
+            "question": "1.Which among the following best describes the Inheritance",
+            "image": "",
+            "options": [
+                "Copying the code already written",
+                " Using the code already written once",
+                "Using already defined functions in programming language",
+                "Using the data and functions into derived segment"
+            ]
+        },
+        {
+            "question": "2.How many basic types of inheritance are provided as OOP feature?",
+            "image": "",
+            "options": [
+                "4",
+                "3",
+                "2",
+                "1"
+            ]
+        },
+        {
+            "question": "3.Which among the following best defines single level inheritance?",
+            "image": "",
+            "options": [
+                "A class inheriting a derived class",
+                "A class inheriting a base class",
+                "A class inheriting a nested class",
+                " A class which gets inherited by 2 classes"
+            ]
+        },
+        {
+            "question": "4.Which among the following is correct for multiple inheritance?",
+            "image": "",
+            "options": [
+                "class student{public: int marks;}s; class stream{int total;}; class topper:public student, public stream{ };",
+                "class student{int marks;}; class stream{ }; class topper: public student{ };",
+                "class student{int marks;}; class stream:public student{ };",
+                "class student{ }; class stream{ }; class topper{ };"
+            ]
+        },
+        {
+            "question": "5.Which programming language doesn’t support multiple inheritance?",
+            "image": "",
+            "options": [
+                " C++ and Java",
+                "C and C++",
+                "Java and SmallTalk",
+                "Java"
+            ]
+        },
+        {
+            "question": "6.Which among the following is correct for a hierarchical inheritance?",
+            "image": "",
+            "options": [
+                "Two base classes can be used to be derived into one single class",
+                " Two or more classes can be derived into one class",
+                " One base class can be derived into other two derived classes or more",
+                "One base class can be derived into only 2 classes"
+            ]
+        },
+        {
+            "question": "7.Which access type data gets derived as private member in derived class?",
+            "image": "",
+            "options": [
+                "Private",
+                "Public",
+                "protected",
+                "Protected and Public"
+            ]
+        },
+        {
+            "question": "8.If a base class is inherited in protected access mode then which among the following is true?",
+            "image": "",
+            "options": [
+                "Public and Protected members of base class becomes protected members of derived class",
+                "Only protected members become protected members of derived class",
+                "Private, Protected and Public all members of base, become private of derived class",
+                "Only private members of base, become private of derived class"
+            ]
+        },
+        {
+            "question": "9.Members which are not intended to be inherited are declared as ",
+            "image": "",
+            "options": [
+                "Public members",
+                "Protected members",
+                "Private or Protected members",
+                "Private members"
+            ]
+        },
+        {
+            "question": "10.Which type of inheritance leads to diamond problem?",
+            "image": "",
+            "options": [
+                "Single level",
+                "Multi-level",
+                "Multiple",
+                "Hierarchical"
+            ]
+        }
+        
+
+
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Inheritance in OOPS";
+    let problems = [
+        {
+            "title": "1. Family Tree 👪",
+            "desc": '<p class="para">Create a class named <span class="code">GrandFather</span> inherit a class named <span class="code">Father</span> from it. Lastly inherit <span class="code">Son</span> from the Father class.<br><br> Create a method <span class="code">printTree()</span> in all the classes, which prints the names of grandfather, father and son as per the output format.<br><br>Take the input names and form their family tree.</p>',
+            "inputs": ["Rajesh Manish Ram"],
+            "outputs": ["Rajesh(grandfather) -> Manish(father) -> Ram(son)"]
+        },
+        {
+            "title": "1. Multiple Inheritance in Animals 🐬🐱",
+            "desc": '<p class="para"><span class="imp">Mammals</span> are the animals which do not lay eggs to give birth. Most of the <span class="imp">fishes are not mammals</span> .<br><br><span class="code">Whale</span> is a special case of <span class="code">fish</span> which is a <span class="code">mammal</span> .<br><br>Create a program with two classes namely <span class="code">Mammals</span> and <span class="code">Fishes</span> , from these classes inherit a class <span class="code">Whale</span> .<br><br>Display the <spam class="imp">details of object</spam> of each class as shown in the output.</p>',
+            "inputs": ["No Input"],
+            "outputs": ["mammal1 : I am a Mammal.<br>fish1 : I am a Fish.<br>whale1 : I am both a Mammal and a Fish."]
+        }
+        
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+{% endblock CodeArena %}

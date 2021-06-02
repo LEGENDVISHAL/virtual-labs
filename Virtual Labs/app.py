@@ -11,9 +11,13 @@ def home():
 def index():
     return render_template("index.html")
 
-@app.route('/expt')
-def expt():
-    return render_template("expt1.html")
+@app.route('/sample')
+def sample():
+    return render_template("sample_expt.html")
+
+@app.route('/expt/<expt_id>')
+def expt(expt_id):
+    return render_template(f'expt{expt_id}.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=port)

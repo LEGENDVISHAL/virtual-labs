@@ -1,0 +1,343 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Classes and Objects in OOPS{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#class" class="list-group-item">2. Class</a>
+    <a href="#object" class="list-group-item">3. Object</a>
+    <a href="#datam" class="list-group-item">4. Data Members</a>
+    <a href="#accesss" class="list-group-item">5. Access Speciiers</a>
+    <a href="#memberf" class="list-group-item">6. Members Functions</a>
+    <a href="#implement" class="list-group-item">7. Implementation</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#cpp_imple" class="list-group-item">7.1 C++ Implementation</a>
+        <a href="#python_imple" class="list-group-item">7.2 Python Implementation</a>
+    </div>
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+
+<p class="heading1" id="intro">Introduction</p>
+<p class="para"><span class="imp">Classes and objects</span> are the <span class="imp">basic building blocks</span> of object-oriented programming. <br> <br>
+    Earlier <span class="code">structures</span> were used to define <span class="code"> data types</span> in the C language. <br>
+    For example, to represent a complex number, structure of real number and the imaginary number is made. Functions for operations on complex number are written <span class="imp">separately.</span>&nbsp;<br> <br>
+    So to make things easier and keep related code in some <span class="imp">wrapper</span>. So Object-oriented programming came into the picture in which <span class="imp">class</span> is the same as structure but with more advanced features.
+</p>
+
+
+<p class="heading1" id="class">Class</p>
+<p class="para">Class is <span class="imp">similar</span> to structure in C. It is a user-defined data type. <br> <br>
+    Functions that are related to this data type are wrapped in class and called <span class="code">methods</span> that can access and modify variables without passing as parameters.&nbsp;<br> <br>
+    A class is nothing but a <span class="code">user-defined blueprint</span> from which objects are created.</p>
+
+<p class="heading1" id="object">Object</p>
+<p class="para">
+    The object is an <span class="imp">instance of a class.</span> Think class similar to data type and object similar to a variable of that data type.<br> <br>
+Objects have attributes and properties in the class defined. <span class="imp">Many objects</span> can be created by the same class.<br> <br>
+When an object of a class is created, the class is said to be <span class="imp">instantiated.</span>
+</p>
+
+<p class="heading1" id="datam">Data Members</p>
+<p class="para">
+    <span class="imp">Data Members</span> are members that are declared with any of the fundamental types, eg. int, char, float, double, etc., as well as other types, including pointer, reference, array types, bit fields, and user-defined types. <br> <br> Basically, variables defined in class are called data members.
+</p>
+
+<p class="heading1" id="accesss">Access Specifiers</p>
+<p class="para">
+    <span class="imp">Access Specifiers</span> define <span class="imp">how</span> data members or member functions should be accessed from the main function or within the member function. There are 3 types of access specifiers.<br> <br>
+<span class="imp">1. private</span>: Private members can only be accessed from <span class="imp">within the class</span> and friend classes and friend functions.&nbsp;<br> <br>
+<span class="imp">2. protected</span>: Protected members can be accessed <span class="imp">within the class and from the derived class.</span><br> <br>
+<span class="imp">3. public</span>: Public members are accessible from <span class="imp">any part</span> of the program.
+</p>
+
+<p class="heading1" id="memberf">Member Functions</p>
+<p class="para">
+    <span class="imp">Member functions</span> are <span class="code">functions</span> that are defined <span class="imp">within the scope of the class.</span> Operators are also member functions.<br> <br>
+    The data members and member functions of the class can be accessed using the <span class="code">dot('.') operator</span> with the object.
+</p>
+
+<p class="heading1" id="implement">Implementation of Class and Object</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >
+#include &lt;iostream&gt;
+using namespace std;
+
+// class complex
+class Complex
+{
+    // access specifier
+    public:
+
+    // data members
+    int real,imag;
+
+    // member functions
+    // constructor
+    Complex() {}
+    Complex(int r, int i)
+    {
+        real = r;
+        imag = i;
+    }
+
+    void display()
+    {
+        if(imag&lt;0)
+        {
+            cout&lt;&lt;real&lt;&lt;&quot; -i&quot;&lt;&lt;abs(imag)&lt;&lt;endl;
+        }
+        else
+        {
+            cout&lt;&lt;real&lt;&lt;&quot; +i&quot;&lt;&lt;imag&lt;&lt;endl;
+        }
+    }
+
+};
+
+int main()
+{
+    // declaration of object
+    Complex obj1(3,5);
+
+    // accessing member function
+    obj1.display();
+
+    // accessing data member
+    obj1.real = 4;
+
+    // accessing member function after modifying data member
+    obj1.display();
+    
+    return 0;
+}
+</code></pre>
+
+
+<p class="heading2" id="python_imple">Python implementation</p>
+<pre><code class="language-python center">
+# class Complex
+class Complex:
+    # constructor
+    def _init_(self, r=0, i=0):
+        self.real = r
+        self.imag = i
+
+    # member function - display
+    def display(self):
+        if self.imag&lt;0:
+            print(f'{self.real} - i{abs(self.imag)}')
+        else:
+            print(f'{self.real} + i{self.imag}')
+
+
+    # member function - increment
+    def increment(self):
+        self.real+=1
+        self.imag+=1
+
+# main 
+
+# Complex object
+obj1 = Complex(2, 3)
+
+# Call display() method
+# Output: 2+i3
+obj1.display()
+
+obj1.increment()
+
+# Output: 3+i4
+obj1.display()
+
+</code></pre>
+
+{% endblock Theory %}
+
+{% block Simulation %}
+<iframe src="https://editor.p5js.org/ritesh-dt/embed/qBTOoqpSn" width="740" height="560"></iframe>
+{% endblock Simulation %}
+
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple mb-2" id="mcq-question" ></div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+
+<script>
+    let mcqs = [
+        {
+            "question": "1. Constructor is executed when _____",
+            "image": "",
+            "options": [
+                "An object goes out of scope.",
+                "A class is declared",
+                "An object is created",
+                "An object is used"
+            ]
+        },
+        {
+            "question": "2. How many ways of reusing are there in class hierarchy?",
+            "image": "",
+            "options": [
+                "1",
+                "2",
+                "4",
+                "3"
+            ]
+        },
+        {
+            "question": "3. Where does the object is created?",
+            "image": "",
+            "options": [
+                "Class",
+                "Constructor",
+                "Destructors",
+                "Attributes"
+            ]
+        },
+        {
+            "question": "4. Which of the following is a valid class declaration?",
+            "image": "",
+            "options": [
+                "Class A { int x; }",
+                "Class B { }",
+                "Public class A { }",
+                "Object A { int x; }"
+            ]
+        },
+        {
+            "question": "5. Which of the following keywords is used to control access to a class member?",
+            "image": "",
+            "options": [
+                "Default",
+                "Break",
+                "Protected",
+                "Asm"
+            ]
+        },
+        {
+            "question": "6. What is the size of empty class?",
+            "image": "",
+            "options": [
+                "0",
+                "2",
+                "4",
+                "1"
+            ]
+        },
+        {
+            "question": "7. Class is pass by _______",
+            "image": "",
+            "options": [
+                "Value",
+                "Reference",
+                "Value or Reference, depending on program",
+                "Copy"
+            ]
+        },
+        {
+            "question": "8. If a base class is inherited in protected access mode then which among the following is true?",
+            "image": "",
+            "options": [
+                "Public and Protected members of base class becomes protected members of derived class",
+                "Only protected members become protected members of derived class",
+                "Private, Protected and Public all members of base, become private of derived class",
+                "Only private members of base, become private of derived class"
+            ]
+        }
+
+
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Classes and Objects";
+    let problems = [
+        {
+            "title": "1. Create a class Car & initialize it's Object 🚗",
+            "desc": '<p class="para">Make a class named <span class="code">Car</span> .<br><br>Add data members:&nbsp;&nbsp;&nbsp;&nbsp;<span class="code">carName</span> , <span class="code">brand</span> , <span class="code">color</span> , <span class="code">price</span>. <br><br>Add a member function called <span class="code">carDetails()</span> which prints the details as shown in the output.</p>',
+            "inputs": ["Model S1,Tesla,Black,50000$"],
+            "outputs": ["carName: Model S1, brand: Tesla, color: Black, price: 50000$"]
+        },
+        {
+            "title": "2. Personal BMI calculator",
+            "desc": '<p class="para">BMI is the <span class="imp">Body Mass Index</span> which takes the ratio of the weight (in kg) to the square of height (in m).<br><br>Create a class <span class="code">BMI</span> which consists of two data members <span class="code">height</span> & <span class="code">weight</span> . Add a method to calculate and display the BMI<br>in the format shown in the output.<br><br>height and weight are given in the input respectively. Round off the answer to 2 decimals.</p>',
+            "inputs": ["1.4 53","1.6 64"],
+            "outputs": ["27.04","25.00"]
+        },
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+
+{% endblock CodeArena %}
+
+

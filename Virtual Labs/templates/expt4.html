@@ -1,0 +1,475 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Constructors And Destructors{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#Key Points" class="list-group-item">2. Key Points</a>
+    <a href="#types" class="list-group-item">3. Types Of Constructors</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#default_cons" class="list-group-item">3.1 Default Constructor</a>
+        <a href="#para_cons" class="list-group-item">3.2 Parameterized Constructor</a>
+        <a href="#copy_cons" class="list-group-item">3.3 Copy Constructor</a>
+    </div>
+    <a href="#destructor" class="list-group-item">4. Destructors</a>
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+<p class="heading1" id="intro">Introduction</p>
+
+<p class="para">Constructors are the special methods that are <span class="imp">called or invoked automatically</span> when the object
+    of the class is created.</p>
+
+<p class="heading1" id="Key Points">Key Points:</p>
+
+<p class="para">Name of the constructor should be <span class="imp">same as name of the class</span>
+    <br><br>
+    Constructors are always <span class="code">Public</span> .
+    <br><br>
+    Constructors does not have any <span class="code">return</span> type. <br>
+</p>
+
+<p class="heading1" id="types">Types Of Constructors</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt4/img1.png') }}" alt="img2">
+<br>
+<br>
+
+
+
+   <p class="heading1" id="default_cons">1. Default Constructors :</p>     
+<p class="para"> Basically Default constructors does <span class="imp">not have any parameters</span>
+    <br><br>
+
+
+    Let see this with an Example.</p>
+
+<p class="heading1">Example</p>
+<p class="para">1. Here we are declared one class named as Student. <br><br>
+    2. In that class we created a default constructor, same name as class i.e <span class="code">Student()</span> <br><br>
+    3. In Main function first we created the object <span class="code">s1</span> of class Student and as soon as we create the object constructor
+    will be called and
+    we will get a respected output. <br></p>
+
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student
+    {
+    public:
+        Student()
+        {
+            cout &lt;&lt; &quot;Welcome to Virtual Lab&quot;;
+        }
+    };
+    
+    int main()
+    {
+        Student s1;
+        return 0;
+    }</code></pre>
+
+
+<br>
+<br>
+
+
+
+    <p class="heading1" id="para_cons">2. Parameterized Constructors :</p>
+
+       <p class="para">In Parameterized constructor <span class="imp">arguments can be passed to the constructor.</span>
+
+        <br> <br>
+        
+        Let see the example of Parameterized Constructor.
+        <br><br></p> 
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as <span class="code">Student</span> and here we are taken two variables <span class="code"> a </span> and <span class="code"> b </span> which are
+    public. <br><br>
+    2. In that class we created one parameterized constructor, same name as class i.e Student(). and it will take to
+    arguments which are int type.<br><br>
+    3. In main function we created object of class Student and pass two integers to it as its a parameterized
+    constructors.and below we simply printed the values. </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student
+    {
+        public:
+            int a,b;
+    
+        Student(int x,int y)
+        {
+            a=x;
+            b=y;
+        }
+    
+       
+    };
+    
+    int main()
+    {
+        Student s1(5,10);
+        cout&lt;&lt;s1.a&lt;&lt;&quot; &quot;&lt;&lt;s1.b&lt;&lt;endl;
+        return 0;
+    }</code></pre>
+
+<br>
+<br>
+
+
+
+       <p class="heading1" id="copy_cons"> 3. Copy Constructors:</p>
+        <p class="para">
+    Copy constructor is also a member function of class basically it initialize the
+    object of class with the help of another object of same class.
+
+    <br><br>
+
+
+    Let see the example of Copy Constructor.
+    <br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as Student. and declared one variable named as Marks. <br><br>
+    2. In that class we created a parameterized constructor, same name as class i.e Student(). and it will take one
+    parameter of type integer. <br><br>
+    3. Below that we create one <span class="imp">copy constructor</span> . <br><br>
+    4. In main function we created one object <span class="code">s1</span> of class Student and passed <span class="code">100</span> value as paremeter after that we called
+    the copy constructor and pass old object
+    i.e s1 to that copy constructor. <br> </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student(int m1)            // Parameterized Constructor
+        {
+            marks = m1;
+        }
+    
+        Student(Student &amp;m2)      //  Copy Constructor
+        {
+            marks = m2.marks;
+        }
+    };
+    
+    int main()
+    {
+        Student s1(100);        //    Calling Parameterized Constructor
+        Student s2(s1);         //    Calling Copy Constructor
+    
+        cout &lt;&lt; s1.marks &lt;&lt; endl;
+        cout &lt;&lt; s2.marks &lt;&lt; endl;
+        return 0;
+    }
+    
+     </code></pre>
+
+<br>
+<br>
+
+<p class="heading1" id="destructor">4. Destructors</p>
+<p class="para">
+        
+    Destructor is also a member function which destructs the objects of the class. <br><br>
+    <span class="heading2">Syntax of Destructor:</span> <span class="code">~Constructor Name()</span>
+
+    <br>
+<p class="heading1" id="Key Points">Key Points:</p>
+1. Destructors have same name as class but we have to place tild sign <span class="code"> ~</span> before it. <br><br>
+2. Destructors are <span class="imp">automatically called when the objects is destroyed.</span> <br><br>
+3. Destructors does not have any <span class="code">return</span> type. <br><br>
+4. Destructors <span class="imp">does not take any arguments.</span> <br><br>
+5. Destructors can not be declared <span class="code">static</span> or <span class="code">const</span> . <br>
+<br>
+
+
+Let see the example of Copy Constructor.
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as Student . and declared one variable named as <span class="code">marks</span> . <br><br>
+    2.In that class we created a Parameterized constructor, same name as class i.e <span class="code">Student()</span> . <br><br>
+    3.Below that we create a one Destructor. <br><br>
+    4.In main function we created one object <span class="code">s1</span> of class Student as soon as we created the object, constructor is
+    automatically invoked
+    and after that below Destructor will be invoked. <br><br>
+    5. We kept printing the statements in constructor and destructor to understand the execution of given constructors
+    and destructors.
+
+
+
+</p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >
+    #include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student                                       // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student()                                            // Constructor Created 
+        {
+            cout&lt;&lt;&quot;Constructor Called Here&quot;&lt;&lt;endl;
+        }
+        
+        ~Student()                                          //  Destructor Created
+        {
+            cout&lt;&lt;&quot;Destructor Called Here&quot;&lt;&lt;endl;          
+        }
+    
+        
+    };
+    
+    int main()
+    {
+        Student s1;     // creating object
+        return 0;
+    }
+    
+     </code></pre>
+
+<br>
+<br>
+
+
+
+{% endblock Theory %}
+
+{% block Simulation %}
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
+{% endblock Simulation %}
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple my-3" id="mcq-question" >What is the name of Mercury?</div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+<script>
+    let mcqs = [
+        {
+            "question": "1. What is the role of a constructor in classes?",
+            "image": "",
+            "options": [
+                "To modify the data whenever required",
+                "To destroy an object",
+                "To initialize the data members of an object when it is created",
+                "To call private functions from the outer world"
+            ]
+        },
+        {
+            "question": "2. Why are constructors efficient instead of a function init() defined by the user to initialize the data members of an object?",
+            "image": "",
+            "options": [
+                "Because user may forget to call init() using that object leading segmentation fault",
+                "Because user may call init() more than once which leads to overwriting values",
+                "Because user may forget to define init() function",
+                "All of the mentioned"
+            ]
+        },
+        {
+            "question": "3. What is a copy constructor?",
+            "image": "",
+            "options": [
+                "A constructor that allows a user to move data from one object to another",
+                "A constructor to initialize an object with the values of another object",
+                "A constructor to check the whether to objects are equal or not",
+                " constructor to kill other copies of a given object."
+            ]
+        },
+        {
+            "question": "4. What happens if a user forgets to define a constructor inside a class?",
+            "image": "",
+            "options": [
+                "Error occurs",
+                "Segmentation fault",
+                "Objects are not created properly",
+                "Compiler provides a default constructor to avoid faults/errors"
+            ]
+        },
+        {
+            "question": "5. What would be behaviour if the constructor has a return type?",
+            "image": "",
+            "options": [
+                "Compilation error",
+                "Runtime error",
+                "Compilation and runs successfully",
+                "Only String return type is allowed"
+            ]
+        },
+        {
+            "question": "6. Which among the following describes a destructor?",
+            "image": "",
+            "options": [
+                "A special function that is called to free the resources, acquired by the object",
+                "A special function that is called to delete the class",
+                "A special function that is called anytime to delete an object",
+                "A special function that is called to delete all the objects of a class"
+            ]
+        },
+        {
+            "question": "7. When a destructor is called?",
+            "image": "",
+            "options": [
+                "After the end of object life",
+                "Anytime in between object’s lifespan",
+                "At end of whole program",
+                "Just before the end of object life"
+            ]
+        },
+        {
+            "question": "8. Which among the following is correct for abstract class destructors?",
+            "image": "",
+            "options": [
+                "It doesn’t have destructors",
+                "It has destructors",
+                "It may or may not have destructors",
+                "It contains an implicit destructor"
+            ]
+        },
+        {
+            "question": "9. If in multiple inheritance, class C inherits class B, and Class B inherits class A. In which sequence are their destructors called if an object of class C was declared?",
+            "image": "",
+            "options": [
+                "~C() then ~B() then ~A()",
+                "~B() then ~C() then ~A()",
+                "~A() then ~B() then ~C()",
+                " ~C() then ~A() then ~B()"
+            ]
+        },
+        {
+            "question": "10. How the constructors and destructors be differentiated?",
+            "image": "",
+            "options": [
+                "Destructor have a return type but constructor doesn’t",
+                "Destructors can’t be defined by the programmer, but constructors can be defined",
+                "Destructors are preceded with a tilde (~) symbol, and constructor doesn’t",
+                " Destructors are same as constructors in syntax"
+            ]
+        }
+
+
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Constructor and Destructor";
+    let problems = [
+        {
+            "title": "1. Flying Aeroplanes ✈️",
+            "desc": '<p class="para">Create a class named <span class="code">Aeroplane</span> .<br><br>Print the output as <span class="code">"Aeroplane is Flying"</span> whenever an object is created.<br><br>Use the <span class="imp">default constructor</span> to acheive the result.</p>',
+            "inputs": ["No Input"],
+            "outputs": ["Aeroplane is Flying"]
+        },
+        {
+            "title": "2. Circles and Rectangles",
+            "desc": '<p class="para">Make a class called <span class="code">Shape</span> .<br><br>Use the same class to take the <span class="code">length</span> and <span class="code">breadth</span> of rectangle and <span class="code">radius</span> in case of circle.<br><br> Make use of <span class="imp">parameterized constructors</span> to take the dimensions based on number of parameters.<br>Input is given as length, breadth and radius respectively.<br><br>Print the area of circle and rectangle as given in the output. Round off answer to 2 decimals. ( <span class="code">π = 3.142</span> )</p>',
+            "inputs": ["4 5 6","23 12 8"],
+            "outputs": ["rectArea: 20, circleArea: 113.09","rectArea: 276, circleArea: 201.06"]
+        },
+        {
+            "title": "2. Xerox machine 🖨️",
+            "desc": '<p class="para">Suppose you have a <span class="imp">Xerox machine</span> which copies text from one sheet of paper to other.<br><br>Create a class <span class="code">Paper</span> which has data member <span class="code">text</span>.<br><br>Make use of the <span class="imp">copy constructor</span> to simulate the copying of paper objects using xerox machine.<br><br>Copy the text of paper1 to paper2 as shown in the output.</p>',
+            "inputs": ["paper1, this is the text for paper1"],
+            "outputs": ["paper2, this is the text for paper1"]
+        }
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+{% endblock CodeArena %}

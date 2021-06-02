@@ -22,8 +22,8 @@
 <script>hljs.highlightAll();</script>
 <p class="heading1" id="intro">Introduction</p>
 
-<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in ascending or
-    descending Insertion sort can be used.</p>
+<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in <span class="imp">ascending or
+    descending</span> Insertion sort can be used.</p>
 
 <p class="heading1" id="principle">Principle of Insertion Sort</p>
 
@@ -39,15 +39,15 @@
     correct position and we continue. <br><br>
     3. And If not, then we have to put it at correct position via comparing all elements behind and <span
         class="imp">moving them 1 step ahead until</span> we find correct position for that current element. <br><br>
-    4. By the end of <span class="code">all iterations</span> we get whole array sorted.
-</p>
+    4. By the end of all iterations we get <span class="imp">whole array sorted</span> .</p>
 
 <p class="heading1" id="example">Example</p>
-<p class="para">1. Take example of arr [6, 2, 3, 5, 9, 8, 1] of n=7 elements. First step is to iterate through arr from
-    index 1. <br>
-    2. So at index i=1 check consider [6,2] so 2 is not in its correct position i.e. compare 2 with previous elements
+<p class="para">1. Take example of <span class="code">arr = [6, 2, 3, 5, 9, 8, 1]</span> of <span class="code">n=7</span> elements. First step is to iterate through arr from
+    index 1. <br><br>
+
+    2. So at index <span class="code">i=1</span> check consider <span class="code">[6,2]</span> so 2 is not in its correct position i.e. <span class="imp">compare 2 with previous elements</span> .
     and move them to right until we find a smaller element than 2. so here 6 will be moved to index 1 and then assign 2
-    to its correct position so now array till index 1 is sorted. [2, 6] <br>
+    to its correct position so now array till index 1 is sorted. <span class="code">[2, 6]</span> <br><br>
     3. Similarly as step 2 for each i do same things and at finally whole array will be sorted. See the image below for
     better understanding.</p>
 
@@ -57,7 +57,7 @@
 <p class="heading2" id="cpp_imple">C++ implementation</p>
 <pre><code class="language-cpp center" >#include &lt;iostream&gt;
         using namespace std;
-
+        
         // Insertion sort function
         void Insertion_Sort(int arr[], int n)
         {
@@ -67,11 +67,11 @@
             {
                 // Store current element in cur
                 cur = arr[i];
-
+                
                 // Iterating variable for finding
                 // correct position of current element
                 j = i - 1;
-
+        
                 // Iterate on behind the current element
                 // Until we reach start of array or arr[j]&gt;cur
                 while (j &gt;= 0 &amp;&amp; arr[j] &gt; cur)
@@ -79,18 +79,18 @@
                     // Each step assign arr[j] to arr[j+1]
                     // i.e. move element ahead
                     arr[j + 1] = arr[j];
-
+                    
                     // Decrement j
                     j--;
                 }
-
+        
                 // We found correct position for cur
                 // i.e j+1 so assign that to cur
                 arr[j + 1] = cur;
             }
         }
-
-        // Display array function
+        
+        // Display array function 
         void Display_Array(int arr[], int n)
         {
             cout&lt;&lt;&quot;Displaying Array...    : &quot;;
@@ -98,25 +98,25 @@
                 cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
             cout &lt;&lt; endl;
         }
-
+        
         // Main Function
         int main()
         {
             // Sample array we can take input from user also
             int arr[] = {6, 2, 3, 5, 9, 8, 1};
-
+        
             // Number of elements
             int n = sizeof(arr) / sizeof(arr[0]);
-
+        
             // Displaying array before sorting
             Display_Array(arr, n);
-
+        
             // Calling function insertion sort
             Insertion_Sort(arr, n);
-
+        
             // Displaying array after sorting
             Display_Array(arr, n);
-
+        
             return 0;
         }</code></pre>
 
@@ -131,24 +131,24 @@
                         arr[j + 1] = arr[j]
                         j-=1
                     arr[j + 1] = cur
-
-            # Display array function
+            
+            # Display array function 
             def Display_Array(arr,n):
                 print(&quot;Displaying Array...    : &quot;,end=&quot;&quot;)
                 for i in range(n):
                     print(arr[i],end=&quot; &quot;)
                 print()
-
+            
             # Main program
             arr = [6, 2, 3, 5, 9, 8, 1]
             n = len(arr)
-
+            
             # Displaying array before sorting
             Display_Array(arr, n)
-
+            
             # Calling function insertion sort
             Insertion_Sort(arr, n)
-
+            
             # Displaying array after sorting
             Display_Array(arr, n)</code></pre>
 
@@ -157,38 +157,152 @@
 
 {% endblock Theory %}
 
-
-
 {% block Analysis %}
-<div class="mcq-container">
-    <template class="my-3" id="mcq-template">
-        <div class="my-3">
-            <img class="img-fluid w-50 rounded" id="mcq-image" src="" alt="Question Image" />
-        </div>
 
-        <div class="heading1 mb-2" id="mcq-question" >What is the name of Mercury?</div>
-        <div class="option-group" id="mcq-options">
-            {% for i in range(4) %}
-                    <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
-            {% endfor %}
-        </div>
-    <hr />
-    </template>
+<div class="container img-lg d-flex center">
+    <canvas id="myChart"></canvas>
 </div>
+
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Poppins';
+    Chart.defaults.global.defaultFontSize = 16;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data: {
+            labels: ['1000', '5000', '10000', '50000', '100000', '200000'],
+            datasets: [{
+                label: "Insertion Sort",
+                backgroundColor: [
+                    'rgba(0, 0, 255, 0.4)',
+                    'rgba(0, 0, 255, 0.4)',
+                    'rgba(0, 0, 255, 0.4)',
+                    'rgba(0, 0, 255, 0.4)',
+                    'rgba(0, 0, 255, 0.4)',
+                    'rgba(0, 0, 255, 0.4)'
+                    
+                    
+                    
+                    
+                ],
+                data: [0, 0.045, 0.18, 4.25, 17.62, 69.12]
+            },
+            {
+                label: "Selection Sort",
+                backgroundColor: [
+                    'rgba(255,0,0,0.4)',
+                    'rgba(255,0,0,0.4)',
+                    'rgba(255,0,0,0.4)',
+                    'rgba(255,0,0,0.4)',
+                    'rgba(255,0,0,0.4)',
+                    'rgba(255,0,0,0.4)'
+                   
+
+                ],
+                data: [0, 0, 0.9, 6.25, 26.35, 100.3]
+            },
+            {
+                label: "Bubble Sort",
+                color: '#9CBABA',
+                backgroundColor: [
+                    'rgba(0,255,0,0.4)',
+                    'rgba(0,255,0,0.4)',
+                    'rgba(0,255,0,0.4)',
+                    'rgba(0,255,0,0.4)',
+                    'rgba(0,255,0,0.4)',
+                    'rgba(0,255,0,0.4)'
+                    
+                ],
+                data: [0, 0.145, 0.6, 14.05, 56.9, 229.44]
+            },
+            {
+                label: "Quick Sort",
+                backgroundColor: [
+                    'rgba(255,0,255,0.4)',
+                    'rgba(255,0,255,0.4)',
+                    'rgba(255,0,255,0.4)',
+                    'rgba(255,0,255,0.4)',
+                    'rgba(255,0,255,0.4)',
+                    'rgba(255,0,255,0.4)'
+                    
+
+                ],
+                data: [0, 0, 0, 0.01, 0.02, 0.05]
+            },
+
+            ]
+
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Performance Of Sorting Algorithm',
+                fontSize: 18
+            },
+            legend: {
+                display: true,
+                position: 'right',
+                labels: {
+                    fontColor: '#000'
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 0,
+                    bottom: 0,
+                    top: 0
+                }
+            },
+            scales: {
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Time in seconds'
+                    }
+                }],
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Number of elements'
+                    }
+                }]
+            },
+
+            tooltips: {
+                enabled: true
+            }
+        }
+    });
+</script>
+<p class="para p-5">We will analyze and compare different sorting algorithms on the basis of different parameters like <span class="imp">Time Complexity, In-place, Stability,</span> etc.The above graph is for the comparison of insertion sort, Bubble sort, Quick sort and selection sort  on the basis on time. <br><br>
+    In a comparison based sorting algorithms, we compare elements of an array with each other to determines which of two elements should occur first in the final sorted list. <br><br>
+    All comparison-based sorting algorithms have a complexity lower bound of <span class="code">nlogn</span> (Think!) <br><br>
+    Here is the comparison of time and space complexities of some popular comparison based sorting algorithms: <br>
+</p>
+<img src="{{ url_for('static', filename='img/expt1/img2.png') }}" alt="" class="img-md d-flex center"> 
 {% endblock Analysis %}
+
+{% block Simulation %}
+<iframe src="https://editor.p5js.org/ritesh-dt/embed/oK3SQWrc6" width="740" height="560"></iframe>
+{% endblock Simulation %}
 
 {% block CodeArena %}
 <div class="template-container">
 </div>
 <template id="code-question-template">
     <div class="code-question">
-        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
         <p id="code-question-desc"></p>
         <div class="row">
-            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
                 <p class="heading2 imp my-2">Input</p>
             </div>
-            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
                 <p class="heading2 imp my-2">Output</p>
             </div>
 
@@ -216,9 +330,9 @@
                 <div>
                     <div class="heading2 mt-3">Output</div>
                     <div class="code-area-output text-wrap">
-                        <pre></pre>
+                        <pre class="output"></pre>
                     </div>
-                    <pre id="code-question-summary"></pre>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
                 </div>
             </div>
         </div>
@@ -228,44 +342,22 @@
 <div class="certificate container p-5"></div>
 
 <script>
-    let mcqs = [
-        {
-            "question": "What is the name of Mercury?",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
-            "options": [
-                "Mercury",
-                "Earth",
-                "Abhay",
-                "Amey"
-            ]
-        },
-        {
-            "question": "Karandak kon jeeta?",
-            "image": "",
-            "options": [
-                "COMP",
-                "MECH",
-                "INSTRU",
-                "CHEM"
-            ]
-        }
-    ];
+    let expt = "Insertion Sort";
     let problems = [
         {
-            "title": "Addition of 3 numbers",
-            "desc": "Addition of <b class='imp'>2 numbers</b>",
-            "inputs": ["1 2 3"],
-            "outputs": ["6"]
+            "title": "1. Sort the array using Insertion sort",
+            "desc": '<p class="para">You have given an array <span class="code">A</span> of <span class="code">n</span> integers. You have to sort the array and print it using <span class="code">Insertion Sort</span> .</p>',
+            "inputs": ["8 2 4 5 1 2 4 5 9"],
+            "outputs": ["1 2 2 4 4 5 5 9"]
         },
         {
-            "title": "Subtraction of 2 numbers",
-            "desc": "Subtraction of <b>2 numbers</b>",
-            "inputs": ["1 2"],
-            "outputs": ["-1"]
+            "title": "2. Find position of each element in sorted array",
+            "desc": '<p class="para">You have been given an array <span class="code">A</span> consisting of <span class="code">n</span> integers.<br><br>All the elements in this array are guaranteed to be <span class="imp">unique</span> .<br><br>For each position <span class="code">i</span> in the array <span class="code">A</span> you need to find the position of <span class="code">A[i]</span> should be present in, if the array was a <span class="imp">sorted array</span>.<br><br>You need to find this for each <span class="code">i</span> and print the resulting solution.</p>',
+            "inputs": ["5 8 3 5 2 1"],
+            "outputs": ["5 3 4 2 1"]
         },
     ];
 </script>
-<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
-
 {% endblock CodeArena %}
+

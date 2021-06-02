@@ -18,16 +18,16 @@ for (let mcq of mcqs) {
     for (let idx = 0; idx < mcq["options"].length; idx++) {
         let option = mcq["options"][idx];
         if (idx == 0)
-            options.push(`<button type="button" class="btn gradient-head border btn-sm mx-1 correct" onclick="showAnswer(this)">${option}</button>`);
+            options.push(`<button type="button" class="btn border my-2 btn-sm mx-1 correct" onclick="showAnswer(this)">${option}</button><br>`);
         else
-            options.push(`<button type="button" class="btn gradient-head border btn-sm mx-1" onclick="showAnswer(this)">${option}</button>`);
+            options.push(`<button type="button" class="btn border my-2 btn-sm mx-1" onclick="showAnswer(this)">${option}</button><br>`);
     }
 
     options = options.sort(() => Math.random() - 0.5);
     mcq_options.innerHTML = ""
     for (let idx = 0; idx < options.length; idx++) {
         let option = options[idx];
-        mcq_options.innerHTML += option;
+        mcq_options.innerHTML +=`<span class="para"><b>${idx+1}. </b></span>`+ option;
     }
 
     mcq_container.appendChild(clone);

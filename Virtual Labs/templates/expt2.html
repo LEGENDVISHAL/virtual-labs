@@ -1,0 +1,421 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Process Scheduling Algorithms{% endblock expt_title %}
+{% block toc %}
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#Key Points" class="list-group-item">2. Key Points :</a>
+    <a href="#types" class="list-group-item">3. Types Of Scheduling Algorithms</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#FCFS" class="list-group-item">3.1 FCFS</a>
+        <a href="#SJF" class="list-group-item">3.2 SJF</a>
+        <a href="#RR" class="list-group-item">3.3 RR</a>
+        <a href="#PB" class="list-group-item">3.4 Prority based</a>
+    </div>
+
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+<p class="heading1" id="intro">Introduction</p>
+
+<p class="para">In a system there are numerous processes present in different different states at a particular time.
+    Some processes may be in waiting state, while others may be in running states etc.
+    But here the question arises how CPU selects one process from many for execution?? The answer is CPU uses Process
+    Scheduling Algorithms for execution of processes.
+
+</p>
+
+<p class="heading1" id="Key Points">Key Points:</p>
+
+<p class="para">Here are some algorithms have <span class="code">Preemptive mode </span>and some have <span
+        class="code"> Non Preemptive mode </span>.
+    <br> <br>
+    <span class="imp">Preemptive Algorithms:</span>These algorithms are based on the priority means scheduler can
+    preempt a low
+    priority running process when any high priority process entered in running state.
+    <br>
+    <br>
+    <span class="imp"> Non Preemptive Algorithms:</span> In these algorithms when process enters in running state it
+    cannot be preempted until its completion.
+    <br>
+</p>
+
+<p class="heading1" id="types">Types of Scheduling Algorithms</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt2/img3.png') }}" alt="img3">
+<br>
+<br>
+
+
+<p class="heading1" id="FCFS">3.1 First Come First Serve:</p>
+
+</b> As the name suggests, which process comes <span class="imp">first </span>in the ready state that will be executed by the CPU first. <br>
+After completion of the current process,the second process will start the execution irrespective of the arriva time.
+<br>
+Let's see this with an Example.
+
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt2/img4.png') }}" alt="img4">
+
+
+<p class="para">
+    1.In the above example you can see that there are 3 processes present:<span class="imp"> P1,P2 and P3.</span> <br> <br>
+    2.These Processes come in the ready state at <span class="imp">0ms,10ms and 7 ms</span> respectively. <br> <br>
+    3. So here process <span class="imp">P1</span> comes in running state at <span class="imp">0 ms</span> so according to its burst time P1 will execute in the first 10
+    sec. <br> <br>
+    4.After 10 sec Process <span class="imp">P2</span> starts its execution and it will be executed for next <span class="imp">5 ms.</span> <br> <br>
+    5.And similarly after P2, process P3 starts its execution for next 7 ms. <br> <br>
+    You can see the gantt chart of FCFS.
+
+</p>
+
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt2/img5.png') }}" alt="img5">
+
+
+<p class="heading1">Advantages Of FCFS:</p>
+<p class="para">
+    1.This algorithm is very simple and <span class="imp">easy to implement.</span>
+</p>
+
+<p class="heading1">Disdvantages:</p>
+<p class="para">
+    1.This algorithm is <span class="imp">Non-Preemptive</span> so we have to execute the process completely and after that we can
+    execute further processes.
+</p>
+
+<p class="heading1" id="SJF">3.2 Shortes Job First</p>
+
+</b>
+Earlier in FCFS algorithm we have seen that process having very high burst time and if it comes first then other
+process which have less burst time have to wait until the first one
+is completely executed.
+
+<br>
+
+so with Shortest Job First Algorithm(SJF) we can solve this problem
+<br>
+Let's see this with an Example.
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt2/img6_sjf.png') }}" alt="img6_sjf">
+
+
+<p class="para">
+
+    1.In the above example you can see that there are <span class="imp">4</span> processes present: <span class="imp">P1,P2,P3 and P4</span> <br><br>
+    2.Here we have only one process i.e. <span class="imp">P2</span> which has an arrival time of <span class="imp">0ms.</span> so it will be executed for 4ms. <br><br>
+    3. Now after that there are two new processes are arrived P1 and P3, here we can see that burst time of P1 is 5ms
+    and the burst time of <span class="imp">P2 is 2ms.</span> <br><br>
+    4.So here we can say that process <span class="imp">P3</span> will be executed first as its burst time is less than P1. <br><br>
+    5.Here P3 will be executed till 6ms. Now here again after 6ms we have two processes <span class="imp">P1 and P4</span> (currently we are at
+    6ms and process P4 comes at 5ms). <br><br>
+    6.Again hare <span class="imp">P4</span> has less burst time so it will executed till 10ms (6ms + 4ms).And after that finally P1 will
+    executed
+    till 15 ms.
+    i.e<span class="code">(10ms + 5 ms). </span><br><br>
+
+
+
+    you can see the Gantt chart of SJF below.
+
+</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt2/img7.png') }}" alt="img7">
+<p class="heading1">Advantages Of SJF:</p>
+<p class="para">
+    1. In SJF short processes will be executed first.
+</p>
+
+
+
+<br>
+<br>
+
+<p class="heading1" id="RR">3.3 Round Robin:</p>
+</b>In this algorithm we have given <span class="code">fix time quantum </span>and the CPU <br>will be allocated to that
+process for that amount of time and only one process at a time. <br>
+For example if we have four processes
+<span class = "imp">P1,P2,P3,and P4</span> and out time quantum is <span class = "imp">3ms</span>, then process <span class = "imp">P1</span>> will be executed for <span class = "imp">3ms</span>,after that <span class = "imp">P2</span> will be executed
+for <span class = "imp">3ms</span> then <span class = "imp">P3</span> for <span class = "imp">3ms</span> and <span class = "imp">P4</span> will also for <span class = "imp">3ms</span>.After one cycle again <span class = "imp">P1</span> will executed for <span class = "imp">3ms,P2</span> will be for<span class = "imp"> 3ms</span> and
+so on until process complete its execution.
+<br>
+Let's see this with an Example.
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt2/img8.png') }}" alt="img8">
+<p class="para">1.In this example you can see that at every cycle,execution time of each process is <span class = "imp">2ms</span>> as we are taken the 
+    <span class="code">Time Quantum = 2ms</span>
+ <br> <br>
+    2.So Process <span class = "imp">P1</span> will be executed for <span class = "imp">2ms</span>>, similarly Process P2 and so on. <br> <br>
+    
+    3.Here you can notice that process <span class = "imp">P2</span>> has burst time of <span class = "imp">5</span>> ms but at 3rd round it will be executed for 1ms as in earlier 2 rounds 
+    execution of process P2 will be (2+2=4ms) so remaining 1ms only be executed even though time quantum is 2ms.  <br> <br>
+
+    
+    You can refer to the below Gantt chart of Round Robin Algorithms. <br> <br>
+    
+
+
+
+
+</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt2/img9.png') }}" alt="img9">
+
+<p class="heading1">Advantages Of RR:</p>
+<p class="para">
+    1.Every process gets the <span class = "imp">equal CPU usage.</span> <br>
+    2.As it is <span class = "imp">Cyclic</span> in nature so there is no <span class = "imp">Starvation</span>.
+</p>
+<p class="heading1">Disadvantages Of RR:</p>
+<p class="para">
+    1.As we are giving CPU usage equally to each processes it may cause <span class = "imp">poor response to short processes</span>. <br>
+    2.Here <span class = "imp">Average waiting</span> time is <span class = "imp">very long</span>.
+</p>
+
+<br>
+<br>
+
+<p class="heading1" id="PB">3.4 Priority Based:</p>
+</b>In this algorithm we have given <span class="code">Priority Number</span>to each processes<br>and depending on that
+Priority
+CPU will select processes for execution.<br>
+Here we can give priority to anything. It's just used for identifying which process has higher priority and which
+one has lower priority.
+For example we can give 1 has higher priority and 100 as lower. also the reverse can also be true.
+<br>
+Let's see this with an Example.
+<br><br>
+<p class="heading1" id="example">Example</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt2/img10.png') }}" alt="img10">
+
+<p class="para">1.Here the Process <span class = "imp">P1</span> arrives at time <span class = "imp">0</span> and has the burst time of <span class = "imp">3ms</span> and it has priority number <span class = "imp">2</span>.
+    Since there is no other process has arrived till now, hence it will execute immediately. <br> <br>
+
+    2.After the execution of <span class = "imp">P1</span>, there are two more processes that have arrived i.e <span class = "imp">P2 and P3</span>.
+     as we can see that the priority of P3 is <span class = "imp">3</span> hence the CPU will execute <span class = "imp">P3 before P2</span>. <br>
+     3.After the execution of P3, All the processes are available for execution.
+      The Process which has the lowest priority number will be given the priority. Since <span class = "imp">P6</span> has priority <span class = "imp">4</span> hence it will be executed just after <span class = "imp">P3</span>. <br> <br>
+    
+    4.After <span class = "imp">P6, P4</span> has the least priority among all available processes so it will be executed for its complete burst time. <br> <br>
+    
+    5.Since all the processes are available for execution hence All the processes will be executed according to their priorities. <br> <br>
+    
+    
+
+    <span class="code">Note:</span> <br>
+    If two processes have similar priority then,the one which has the least arrival time will be executed first.
+    <img class="img-xl d-flex center" src="{{ url_for('static', filename='img/expt2/img11.png') }}" alt="img11">
+
+</p>
+
+
+<p class="heading1">Advantages Of Priority Based Algorithm:</p>
+<p class="para">
+    1.This algorithm provides us good mechanism where we can define the relative importance of each of the processes
+    more precisely. <br>
+
+</p>
+<p class="heading1">Disadvantages Of Priority Based:</p>
+<p class="para">
+    1.As this algorithm is bsed on the priority, if high priority algorithm uses lot up CPU then low priority processes
+    may Starve and they
+    can be postponed indefinitely. <br>
+
+</p>
+
+
+
+
+
+{% endblock Theory %}
+
+{% block Simulation %}
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
+{% endblock Simulation %}
+
+{% block Analysis %}
+<div class="img-lg d-flex center">
+    <canvas id="myChart" class="img-sm d-flex center"></canvas>
+  </div>
+  <p class="para p-4"><span class="imp">Scheduling</span> is a fundamental operating system function, since almost all computer resources are scheduled before use. <br>The CPU is one of the primary computer resources. <span class="imp">Central Processing Unit (CPU) scheduling</span> plays an important role by switching the CPU among various processes. <br><br> A processor is the important resource in computer; the <span class="imp">operating system can make the computer more productive</span> . The purpose of the operating system is that to allow the process as many as possible running at all the time in order to make best use of CPU.<br><br> The high efficient <span class="imp">CPU scheduler depends on design of the high quality scheduling algorithms</span> which suits the scheduling goals. In this paper, we reviewed various fundamental CPU scheduling algorithms for a single CPU and shows which algorithm is best for the particular situation.</p>
+  <img src="{{ url_for('static', filename='img/expt2/img12.png') }}" alt="img12" class="img-sm d-flex center"> 
+<script>
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Poppins';
+    Chart.defaults.global.defaultFontSize = 16;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+      type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        labels:['P1', 'P2', 'P3', 'P4','w.t'],
+        datasets:[{
+            label: "FCFS",
+            backgroundColor: "green",
+            borderColor: "lightgreen",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+            data: [0,10,12,20,12.5]
+        },
+        {
+            label: "SJF",
+            backgroundColor: "blue",
+            borderColor: "lightblue",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+            data: [16,0,8,2,6.5]
+        },
+        {
+            label: "Round Robin",
+            backgroundColor: "#bb7700",
+            borderColor: "orange",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+            data: [12,5,17,20,13.5]
+        },
+        {
+            label: "Process Scheduling",
+            backgroundColor: "purple",
+            borderColor: "violet",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+            data: [8,0,18,2,7]
+        }
+      ]
+      },
+      options:{
+        title:{
+          display:true,
+          text:'Waiting Time and Average Waiting Time',
+          fontSize:20
+        },
+        legend:{
+          display:true,
+          position:'right',
+          labels:{
+            fontColor:'#000'
+          }
+        },
+        layout:{
+          padding:{
+            left:50,
+            right:0,
+            bottom:0,
+            top:0
+          }
+        },
+        scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Time (ms)'
+          }
+        }],
+      xAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'Process ID'
+          }
+        }]
+      },
+        tooltips:{
+          enabled:true
+        }
+      }
+    });
+  </script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Process Scheduling Algorithms";
+    let problems = [
+        {
+            "title": "1. Completion time of Processes ⏰",
+            "desc": '<p class="para">Given the <span class="code">Arrival Time</span> and <span class="code">Burst Time</span> of different processes,<br><br> Calculate the <span class="code">Completion Time</span> for each process by using <span class="code">FCFS algorithm</span> .<br><br>Input is given in the format <span class="code">process_name AT BT</span><br><br>Display the output as per the input process order.</p>',
+
+
+            "inputs": ["P1 2 4, P2 1 5, P3 3 3"],
+            "outputs": ["9 5 12"]
+        },
+        {
+            "title": "2. Sequence of Processes 🕒",
+            "desc": '<p class="para">Determine the sequence in which the processes will be executed,<br><br>if the <span class="code">arrival time</span> and the <span class="code">burst time</span> of processes are given in the input.<br><br>Here the operating system is using <span class="code">SJF algorithm</span> for process scheduling.<br><br>Display the process names as per the sequence.</p>',
+            "inputs": ["P1 2 5, P2 3 7, P3 3 9, P4 6 1, P5 7 4"],
+            "outputs": ["P4 -> P5 -> P1 -> P2 -> P3"]
+        },
+        {
+            "title": "3. Follow the Time Quantum ⏳",
+            "desc": '<p class="para">Given the <span class="code">Arrival Time</span> and <span class="code">Burst Time</span> of different processes,<br>find the process which finishes execution at last.<br><br>Use the <span class="code">Round Robin Algorithm</span> with a <span class="code">Time Quantum</span> given in the input to acheive the result.</p>',
+            "inputs": ["TQ=2, P1 2 5, P2 4 6, P3 3 8, P4 1 7"],
+            "outputs": ["P3"]
+        }
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+{% endblock CodeArena %}
