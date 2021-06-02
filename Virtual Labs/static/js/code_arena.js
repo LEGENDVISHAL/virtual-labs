@@ -19,12 +19,12 @@ for (let idx = 0; idx < problems.length; idx++) {
 
     let inputs = clone.querySelector("#code-question-inputs");
     for (let input of problem["inputs"]) {
-        inputs.innerHTML += `<p>${input}</p>`;
+        inputs.innerHTML += `<code style="color:black; font-family:monospace;"><b>${input}</b></code><br>`;
     }
 
     let outputs = clone.querySelector("#code-question-outputs");
     for (let output of problem["outputs"]) {
-        outputs.innerHTML += `<p>${output}</p>`;
+        outputs.innerHTML += `<code style="color:black; font-family:monospace;"><b>${output}</b></code><br>`;
     }
 
     let area = clone.querySelector("#code-question-area");
@@ -152,7 +152,7 @@ function allowCertificate() {
 }
 
 const generateCertificate = function (e) {
-    let expt = "CUSTOMIZE HERE";
+    
     let parent = e.parentElement;
     let name;
     if (localStorage.getItem("studentName") == null) {

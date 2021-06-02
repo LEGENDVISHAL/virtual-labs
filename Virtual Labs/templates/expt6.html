@@ -1,0 +1,346 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Path Finding Algorithms{% endblock expt_title %}
+{% block toc %}
+<div class="list-group-flush p-0 mx-1">
+  <a href="#intro" class="list-group-item">1. Introduction</a>
+  <a href="#dijkstra" class="list-group-item">2. Dijkstra's Algorithm</a>
+  <div class="list-group-flush p-0 mx-3">
+      <a href="#intro1" class="list-group-item">2.1 What is Dijkstra's Algorithm?</a>
+      <a href="#algo1" class="list-group-item">2.2 Algorithm Steps</a>
+      <a href="#impl1" class="list-group-item">2.3 C++ Implementation</a>
+  </div>
+  <a href="#bellman" class="list-group-item">3. Bellman-Ford Algorithm</a>
+  <div class="list-group-flush p-0 mx-3">
+      <a href="#intro2" class="list-group-item">3.1 What is Bellman-Ford Algorithm?</a>
+      <a href="#algo2" class="list-group-item">3.2 Algorithm Steps</a>
+      <a href="#impl2" class="list-group-item">3.3 C++ Implementation</a>
+  </div>
+</div>
+
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+<p class="heading1" id="intro">Introduction</p>
+
+<p class="para">
+    <span class="imp"> Pathfinding or pathing</span> is the plotting, by a computer application, of the shortest route between two points. It is a more practical variant on solving mazes. <br><br> This field of research is based heavily on <span class="code">Dijkstra's algorithm</span> for finding the shortest path on a weighted graph. <br><br>
+    Dijkstra doesn’t work for Graphs with negative weight edges, <span class="code"> Bellman-Ford</span> works for such graphs.
+</p>
+
+
+<p class="heading1" id="dijkstra">Dijkstra's Algorithm</p>
+<p class="heading2" id="intro1">What is Dijkstra's Algorithm?</p>
+<p class="para">
+    Given a graph and a source vertex in the graph, find <span class="imp"> shortest paths</span> from source to all vertices in the given graph. <br><br>
+    In Dijkstra's algorithm <span class="code">shortest path tree</span> SPT is generated with given source as root. <br><br>
+    Shortest path is not concerned with number of edges, it is about sum of <span class="imp">edge weights</span>.
+</p>
+
+<p class="heading2" id="algo1">Algorithm Steps</p>
+<p class="para">
+    1. For given weighted graph, of vertices <span class="code">V</span>, edges <span class="code">E</span> and <span class="code">adj</span> as a weighted graph and <span class="code">src</span> as a source vertex, we have to find SPT rooted at <span class="code">src</span>. <br><br>
+    2. First make <span class="code">vis</span> array which will store whether a vertex is visited or not and a <span class="imp">Min-heap</span> which can be implemented through <span class="imp">Priority-Queue</span>. <br><br>
+    3. Initially mark all vertices <span class="code">false</span> and declare Min heap of priority queue which will store vertex and <span class="imp">total weight</span> to reach this vertex from src.<br><br>
+    4. Push <span class="code">src</span> and weight as 0 in pq. <br><br>
+    5. Now perform below operation until <span class="code">pq</span> becomes empty. <br> <br>
+    5.1. <span class="code">Remove top priority element</span> that is min element from pq based on weight and store in cur. <br> <br>
+    5.2. If cur vertex is <span class="code">already visited then do nothing</span> and continue as we got minimum edge before this. If cur vertex not visited then mark it visited. <br><br>
+    5.3. Print the cur vertex and cur weight that is <span class="code">minimum weight</span> from src to cur vertex. <br><br>
+    5.4. Push every <span class="code">unvisited neighbour vertex</span> with current weight added to weight of that vertex. <br><br>
+    6. After all procedure we get <span class="imp">Shortest Path Tree.</span> with every vertex and minimum weight from src to vertex.
+</p>
+
+<p class="heading2" id="impl1">C++ implementation</p>
+<pre><code class="language-cpp center" >
+// Dijkstra's Algorithm
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct CustomCompare
+{
+    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)
+    {
+        return a.second &gt; b.second;
+    }
+};
+
+int main()
+{
+    int V, E;
+    cin &gt;&gt; V &gt;&gt; E;
+
+    // weighted graph
+    vector&lt;pair&lt;int, int&gt;&gt; adj[V];
+    for (int i = 0; i &lt; E; i++)
+    {
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w});
+    }
+
+    int src;
+    cin &gt;&gt; src;
+
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, CustomCompare&gt; pq;
+    pq.push({src, 0});
+
+    bool vis[V];
+    memset(vis, false, sizeof(vis));
+
+    while (!pq.empty())
+    {
+        auto cur = pq.top();
+        pq.pop();
+
+        if (vis[cur.first])
+            continue;
+        vis[cur.first] = true;
+
+        cout&lt;&lt;cur.first&lt;&lt;&quot; &quot;&lt;&lt;cur.second&lt;&lt;endl;
+
+        for (auto x : adj[cur.first])
+        {
+            if (!vis[x.first])
+                pq.push({x.first, cur.second + x.second});
+        }
+    }
+    return 0;
+}
+</code></pre>
+
+<!-- /////////////////////////////////////////// -->
+<p class="heading1" id="bellman">Bellman-Ford Algorithm</p>
+<p class="heading2" id="intro2">What is Bellman-Ford's Algorithm?</p>
+<p class="para">
+    Dijkstra algorithm doesn't find SPT on graph that contains <span class="imp">negative edge weights.</span> <br><br>
+    <span class="imp">Bellman-Ford</span> works for such graphs. Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems. But time complexity of Bellman-Ford is <span class="code">O(VE)</span>, which is more than Dijkstra. <br><br>
+    Given a graph and a source <span class="code">src</span> in graph, find <span class="code">shortest paths</span> from src to all vertices in the given graph. The graph may contain <span class="imp">negative weight edges.</span>
+</p>
+
+<p class="heading2" id="algo2">Algorithm Steps</p>
+<p class="para">        
+    1. For given weighted graph, of vertices <span class="code">V</span>, edges <span class="code">E</span> and <span class="code">edges</span> as a weighted graph and <span class="code">src</span> as a source vertex, we have to find SPT rooted at <span class="code">src</span>. <br><br>
+    2. Now initialize a <span class="code">dist</span> array with <span class="code">INF</span> and <span class="code">dist[src] with 0.</span> Array is representing the distance between src and i<sup>th</sup> vertex. <br><br>
+    3. Just repeat below steps for <span class="code">V-1</span> iterations. <br><br>
+    3.1. For every edge in edges update the <span class="code">dist[v]</span> as minimum of <span class="code">dist[v]</span> and <span class="code">w+dist[u]</span> <br><br>
+    3.2 Algorithm calculates shortest paths in a <span class="imp">bottom-up manner</span> and uses <span class="imp">Dynamic Programming.</span> <br><br>
+    4. After <span class="code">V-1</span> iterations, Print the <span class="code">dist</span> array.
+</p>
+
+<p class="heading2" id="impl2">C++ implementation</p>
+<pre><code class="language-cpp center" >
+// Bellman Ford Algorithm
+#include <bits/stdc++.h>
+using namespace std;
+
+#define INF 1e9
+
+int main()
+{
+    int V, E;
+    cin >> V >> E;
+
+    // weighted graph
+    vector<vector<int>> edges;
+    for (int i = 0; i < E; i++)
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        edges.push_back({u, v, w});
+    }
+
+    int src;
+    cin >> src;
+
+    // no negative edge cycle
+    vector<int> dist(V,INF);
+    dist[src] = 0;
+
+    for (int i = 0; i < V - 1; i++)
+    {
+        for (auto e : edges)
+        {
+            int u,v,w;
+            u = e[0], v = e[1], w = e[2];
+            dist[v] = min(dist[v], w + dist[u]);
+        }
+    }
+
+    for (int i = 0; i < V; i++)
+    {
+        cout << dist[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
+</code></pre>
+
+{% endblock Theory %}
+
+{% block Simulation %}
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
+{% endblock Simulation %}
+
+{% block Analysis %}
+<body>
+    <div class="container img-lg d-flex center">
+      <canvas id="myChart"></canvas>
+    </div>
+    <p class="para py-5">The <span class="code">Dijkstra algorithm</span> and the <span class="code">Bellman-Ford algorithm</span> are similar in some place.<br> Both of them use the method of <span class="imp">relaxation calculation</span>, which is to find the shortest path by modifying the values of <span class="code">D[i]</span> during the process of traversing the vertices and edges of the graph.<br><br>The Dijkstra algorithm is mainly aimed at the graph with non-negative weight nodes, while the bellman-ford algorithm can deal with the shortest path problem with negative weights.<br><br>They are used to draw the optimal solution of the shortest path, but the Bellman-Ford algorithm has huge redundancy and lower efficiency.<br>In conclusion, the Dijkstra algorithm applies spares graph. In actual application, the algorithm is always optimized, like heap optimization. <br><br>The time complexity cuts to <span class="code">O(nlogn)</span> . The Bellman-Ford algorithm is <span class="imp">inefficient</span> but it is <span class="imp">easy to implement</span>.</p>
+    <img src="{{ url_for('static', filename='img/expt6/img_analysis.png') }}" alt="img_analysis" class="img-md d-flex center"> 
+  
+    <script>
+      let myChart = document.getElementById('myChart').getContext('2d');
+  
+      // Global Options
+      Chart.defaults.global.defaultFontFamily = 'Poppins';
+      Chart.defaults.global.defaultFontSize = 18;
+      Chart.defaults.global.defaultFontColor = '#777';
+  
+      let massPopChart = new Chart(myChart, {
+        type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+        data:{
+          labels:['1000', '5000', '10000', '15000','20000','25000'],
+          datasets:[{
+              label: "Dijkstra",
+              backgroundColor: "blue",
+            borderColor: "lightblue",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+              data: [0.023,0.533,2.172,5.04,9.18,14.44]
+          },
+          {
+              label: "Bellman - ford ",
+              color: '#9CBABA',
+              backgroundColor: "#ff9900",
+            borderColor: "#ffaa00",
+            fill: false,
+            lineTension: 0,
+            radius: 5,
+              data: [0.023,0.782,2.3,6.1,9.50,16.84]
+          },
+        ]
+        },
+        options:{
+          title:{
+            display:true,
+            text:'Comparision Of Dijkstra and Bellman - Ford',
+            fontSize:25
+          },
+          legend:{
+            display:true,
+            position:'right',
+            labels:{
+              fontColor:'#000'
+            }
+          },
+          layout:{
+            padding:{
+              left:50,
+              right:0,
+              bottom:0,
+              top:0
+            }
+          },
+          scales: {
+          yAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Running Time'
+            }
+          }],
+        xAxes: [{
+            scaleLabel: {
+              display: true,
+              labelString: 'Graph Size'
+            }
+          }]
+        },
+          tooltips:{
+            enabled:true
+          }
+        }
+      });
+    </script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Path Finding Algorithms";
+    let problems = [
+        {
+            "title": "1. Completion time of Processes",
+            "desc": '<p class="para">Create a class named <span class="code">Aeroplane</span> .<br><br>Print the output as <span class="code">"Aeroplane is Flying"</span> whenever an object is created.<br><br>Use the <span class="imp">default constructor</span> to acheive the result.</p>',
+            "inputs": ["No Input"],
+            "outputs": ["Aeroplane is Flying"]
+        },
+        {
+            "title": "2. Circles and Rectangles",
+            "desc": '<p class="para">Make a class called <span class="code">Shape</span> .<br><br>Use the same class to take the <span class="code">length</span> and <span class="code">breadth</span> of rectangle and <span class="code">radius</span> in case of circle.<br><br> Make use of <span class="imp">parameterized constructors</span> to take the dimensions based on number of parameters.<br>Input is given as length, breadth and radius respectively.<br><br>Print the area of circle and rectangle as given in the output. Round off answer to 2 decimals. ( <span class="code">π = 3.142</span> )</p>',
+            "inputs": ["4 5 6","23 12 8"],
+            "outputs": ["rectArea: 20, circleArea: 113.09","rectArea: 276, circleArea: 201.06"]
+        },
+        {
+            "title": "3. Xerox machine 🖨️",
+            "desc": '<p class="para">Suppose you have a <span class="imp">Xerox machine</span> which copies text from one sheet of paper to other.<br><br>Create a class <span class="code">Paper</span> which has data member <span class="code">text</span>.<br><br>Make use of the <span class="imp">copy constructor</span> to simulate the copying of paper objects using xerox machine.<br><br>Copy the text of paper1 to paper2 as shown in the output.</p>',
+            "inputs": ["paper1, this is the text for paper1"],
+            "outputs": ["paper2, this is the text for paper1"]
+        }
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+{% endblock CodeArena %}

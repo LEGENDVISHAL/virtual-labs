@@ -1,308 +1,253 @@
 {% extends 'expt_layout.html' %}
-{% block expt_title %}Insertion Sort{% endblock expt_title %}
+{% block expt_title %}Inheritance in OOPS{% endblock expt_title %}
 {% block toc %}
 
 <div class="list-group-flush p-0 mx-1">
     <a href="#intro" class="list-group-item">1. Introduction</a>
-    <a href="#principle" class="list-group-item">2. Principle of Insertion Sort</a>
-    <a href="#algo" class="list-group-item">3. Algorithm Steps</a>
-    <a href="#example" class="list-group-item">4. Example</a>
-    <a href="#implement" class="list-group-item">5. Implementation</a>
+    <a href="#needi" class="list-group-item">2. Need of Inheritance</a>
+    <a href="#modei" class="list-group-item">3. Modes of Inheritance</a>
+    <a href="#typei" class="list-group-item">4. Types of Inheritance</a>
     <div class="list-group-flush p-0 mx-3">
-        <a href="#cpp_imple" class="list-group-item">5.1 C++ Implementation</a>
-        <a href="#python_imple" class="list-group-item">5.2 Python Implementation</a>
+        <a href="#singlei" class="list-group-item">4.1 Single Inheritance</a>
+        <a href="#multiplei" class="list-group-item">4.2 Multiple Inheritance</a>
+        <a href="#hieri" class="list-group-item">4.3 Hierarchical Inheritance</a>
+        <a href="#multilvli" class="list-group-item">4.4 Multilevel Inheritance</a>
+        <a href="#hybridi" class="list-group-item">4.5 Hybrid Inheritance</a>
     </div>
-
-
-
 </div>
+
 {% endblock toc %}
 
 {% block Theory %}
 <script>hljs.highlightAll();</script>
+
 <p class="heading1" id="intro">Introduction</p>
+<p class="para">The capability of a class to derive properties and characteristics from another class is called <span class="imp">Inheritance</span>. It is one of the most important feature of Object Oriented Programming. One of the pillar of OOPS. <br> <br>
+    <span class="imp">Child or Sub or Derived class</span> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
+    <span class="imp">Parent or Super or Base Class</span> : The class whose properties are inherited by sub class is called Base Class or Super class.
+</p>
 
-<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in ascending or
-    descending Insertion sort can be used.</p>
-
-<p class="heading1" id="principle">Principle of Insertion Sort</p>
-
-<p class="para">The array is divided in two parts <span class="italic">(not actually)</span> left part is sorted and
-    right part is unsorted. By Iterating from left to right and moving our line which divides to right we make whole
-    array sorted.</p>
-
-<p class="heading1" id="algo">Algorithm Steps</p>
-
-<p class="para">1. Iterate through array from index 1 to n-1 i.e. iterate whole array as 0th element is already sorted.
-    <span class="italic">(0 base indexing)</span> <br><br>
-    2. At each iteration check if current element is greater than previous element If it is, then current element is at
-    correct position and we continue. <br><br>
-    3. And If not, then we have to put it at correct position via comparing all elements behind and <span
-        class="imp">moving them 1 step ahead until</span> we find correct position for that current element. <br><br>
-    4. By the end of <span class="code">all iterations</span> we get whole array sorted.</p>
-
-<p class="heading1" id="example">Example</p>
-<p class="para">1. Take example of arr [6, 2, 3, 5, 9, 8, 1] of n=7 elements. First step is to iterate through arr from
-    index 1. <br><br>
-
-    2. So at index i=1 check consider [6,2] so 2 is not in its correct position i.e. compare 2 with previous elements
-    and move them to right until we find a smaller element than 2. so here 6 will be moved to index 1 and then assign 2
-    to its correct position so now array till index 1 is sorted. [2, 6] <br><br>
-    3. Similarly as step 2 for each i do same things and at finally whole array will be sorted. See the image below for
-    better understanding.</p>
-
-<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt1/img1.png') }}" alt="img1">
-
-<p class="heading1" id="implement">Implementation</p>
-<p class="heading2" id="cpp_imple">C++ implementation</p>
-<pre><code class="language-cpp center" >#include &lt;iostream&gt;
-        using namespace std;
-        
-        // Insertion sort function
-        void Insertion_Sort(int arr[], int n)
-        {
-            int i, j, cur;
-            // Iterate thorugh array
-            for (i = 1; i &lt; n; i++)
-            {
-                // Store current element in cur
-                cur = arr[i];
-                
-                // Iterating variable for finding
-                // correct position of current element
-                j = i - 1;
-        
-                // Iterate on behind the current element
-                // Until we reach start of array or arr[j]&gt;cur
-                while (j &gt;= 0 &amp;&amp; arr[j] &gt; cur)
-                {
-                    // Each step assign arr[j] to arr[j+1]
-                    // i.e. move element ahead
-                    arr[j + 1] = arr[j];
-                    
-                    // Decrement j
-                    j--;
-                }
-        
-                // We found correct position for cur
-                // i.e j+1 so assign that to cur
-                arr[j + 1] = cur;
-            }
-        }
-        
-        // Display array function 
-        void Display_Array(int arr[], int n)
-        {
-            cout&lt;&lt;&quot;Displaying Array...    : &quot;;
-            for (int i = 0; i &lt; n; i++)
-                cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-            cout &lt;&lt; endl;
-        }
-        
-        // Main Function
-        int main()
-        {
-            // Sample array we can take input from user also
-            int arr[] = {6, 2, 3, 5, 9, 8, 1};
-        
-            // Number of elements
-            int n = sizeof(arr) / sizeof(arr[0]);
-        
-            // Displaying array before sorting
-            Display_Array(arr, n);
-        
-            // Calling function insertion sort
-            Insertion_Sort(arr, n);
-        
-            // Displaying array after sorting
-            Display_Array(arr, n);
-        
-            return 0;
-        }</code></pre>
-
-<p class="heading2" id="python_imple">Python implementation</p>
-
-<pre><code class="language-python center"># Insertion sort function
-            def Insertion_Sort(arr,n):
-                for i in range(1,n):
-                    cur = arr[i]
-                    j = i - 1
-                    while (j &gt;= 0 and arr[j] &gt; cur):
-                        arr[j + 1] = arr[j]
-                        j-=1
-                    arr[j + 1] = cur
-            
-            # Display array function 
-            def Display_Array(arr,n):
-                print(&quot;Displaying Array...    : &quot;,end=&quot;&quot;)
-                for i in range(n):
-                    print(arr[i],end=&quot; &quot;)
-                print()
-            
-            # Main program
-            arr = [6, 2, 3, 5, 9, 8, 1]
-            n = len(arr)
-            
-            # Displaying array before sorting
-            Display_Array(arr, n)
-            
-            # Calling function insertion sort
-            Insertion_Sort(arr, n)
-            
-            # Displaying array after sorting
-            Display_Array(arr, n)</code></pre>
+<p class="heading1" id="needi">Need of Inheritance</p>
+<p class="para">
+    Inheritance is used to declare characteristics of classes inheriting it,<span class ="imp"> without giving its implementation</span>.
+    <br><br>
+    The most important advantage of inheritance is <span class="imp">code reusability.</span>
+</p>
 
 
+<p class="heading1" id="modei">Modes of Inheritance</p>
+<p class="para">
+    <span class="imp">1. Public mode</span>: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
+    <br><br>
+    <span class="imp">2. Protected mode</span> If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
+    <br><br>
+    <span class="imp">3. Private mode</span> If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
+    <br><br>
+    Note : The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed.
+</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/inheritance.png') }}" alt="img1">
 
+<p class="heading1" id="typei">Types of Inheritance</p>
+<p class="para">
+    There are five types of inheritance.
+    <br> <br>
+    1. <span class="heading2">Single inheritance. </span><br>
+    2. <span class="heading2">Multiple inheritance. </span><br>
+    3. <span class="heading2">Hierarchical Inheritance. </span><br>
+    4. <span class="heading2">Multi-level inheritance. </span><br>
+    5. <span class="heading2">Hybrid Inheritance.</span>
+</p>
+
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/types_of_i.png') }}" alt="img1">
+
+<p class="heading2" id="singlei">1. Single Inheritance</p>
+<p class="para">
+    <span class="imp">Single Inheritance</span> enables a derived class to inherit properties and behavior from single parent class. <br>
+    <span class="code">One sub class</span> is inherited by <span class="code">one base class only.</span>
+</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt5/single_i.png') }}" alt="img1">
+
+<p class="heading2" id="multiplei">2. Multiple Inheritance</p>
+<p class="para">
+    When a subclass inherits from <span class="code">multiple base classes</span>, it is known as <span class="imp">Multiple Inheritance.</span>
+    <br><br>
+    For example: <span class="code">Amphibians</span> is derived from Terrestrial and Aquatic animals. 
+    <br>
+    Frog can survive on land as well as water. <br><br>
+
+    If the derived class need to access one of the same named member function of the base classes then it results in <span class="imp">ambiguity.</span> <br>
+    Ambiguity can be reolved by using <span class="code">scope resolution operator</span> or using <span class="code">virtual base class.</span> <br><br>
+
+    Note: Java <span class="code">doesn't support</span> multiple inheritance.
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/multiple_i.png') }}" alt="img1">
+
+<p class="heading2" id="hieri">3. Hierarchical Inheritance</p>
+<p class="para">
+    If <span class="code">more than one class</span> is inherited from the base class, it’s known as <span class="imp">Hierarchical inheritance.</span> <br><br>
+    For example: Primary and Secondary colors are derived from Color base class.
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/hier_i.png') }}" alt="img1">
+
+<p class="heading2" id="multilvli">4. Multilevel Inheritance</p>
+<p class="para">
+    It is implemented by defining <span class="code">at least three classes.</span> <br><br>
+    In <span class="imp">Multilevel Inheritance</span>, there is one base class and other two are derived class.
+</p>
+<img class="img-xsm d-flex center" src="{{ url_for('static', filename='img/expt5/multilvl_i.png') }}" alt="img1">
+
+<p class="heading2" id="hybridi">5. Hybrid Inheritance</p>
+<p class="para">
+    <span class="imp">Hierarchical Inheritance</span> reflects any legal <span class="code">combination</span> of other four types of inheritance. <br><br>
+    For example: Hierarchical inheritance + Multiple Inheritance
+</p>
+<img class="img-sm d-flex center" src="{{ url_for('static', filename='img/expt5/hybrid_i.png') }}" alt="img1">
 
 {% endblock Theory %}
 
-{% block Analysis %}
-
-<div class="container img-lg d-flex center">
-    <canvas id="myChart"></canvas>
-</div>
-
-<script>
-    let myChart = document.getElementById('myChart').getContext('2d');
-
-    // Global Options
-    Chart.defaults.global.defaultFontFamily = 'Poppins';
-    Chart.defaults.global.defaultFontSize = 16;
-    Chart.defaults.global.defaultFontColor = '#777';
-
-    let massPopChart = new Chart(myChart, {
-        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-            labels: ['1000', '5000', '10000', '50000', '100000', '200000'],
-            datasets: [{
-                label: "Insertion Sort",
-                backgroundColor: [
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)'
-                    
-                    
-                    
-                    
-                ],
-                data: [0, 0.045, 0.18, 4.25, 17.62, 69.12]
-            },
-            {
-                label: "Selection Sort",
-                backgroundColor: [
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)'
-                   
-
-                ],
-                data: [0, 0, 0.9, 6.25, 26.35, 100.3]
-            },
-            {
-                label: "Bubble Sort",
-                color: '#9CBABA',
-                backgroundColor: [
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)'
-                    
-                ],
-                data: [0, 0.145, 0.6, 14.05, 56.9, 229.44]
-            },
-            {
-                label: "Quick Sort",
-                backgroundColor: [
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)'
-                    
-
-                ],
-                data: [0, 0, 0, 0.01, 0.02, 0.05]
-            },
-
-            ]
-
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Performance Of Sorting Algorithm',
-                fontSize: 18
-            },
-            legend: {
-                display: true,
-                position: 'right',
-                labels: {
-                    fontColor: '#000'
-                }
-            },
-            layout: {
-                padding: {
-                    left: 50,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
-            scales: {
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Time in seconds'
-                    }
-                }],
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Number of elements'
-                    }
-                }]
-            },
-
-            tooltips: {
-                enabled: true
-            }
-        }
-    });
-</script>
-<p class="para p-5">We will analyze and compare different sorting algorithms on the basis of different parameters like <span class="imp">Time Complexity, In-place, Stability,</span> etc.The above graph is for the comparison of insertion sort, Bubble sort, Quick sort and selection sort  on the basis on time. <br><br>
-    In a comparison based sorting algorithms, we compare elements of an array with each other to determines which of two elements should occur first in the final sorted list. <br><br>
-    All comparison-based sorting algorithms have a complexity lower bound of <span class="code">nlogn</span> (Think!) <br><br>
-    Here is the comparison of time and space complexities of some popular comparison based sorting algorithms: <br>
-</p>
-<img src="{{ url_for('static', filename='img/expt1/img2.png') }}" alt="" class="img-md d-flex center"> 
-{% endblock Analysis %}
-
 {% block Simulation %}
-
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
 {% endblock Simulation %}
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple my-3" id="mcq-question" >What is the name of Mercury?</div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+<script>
+    let mcqs = [
+        {
+            "question": "1.Which among the following best describes the Inheritance",
+            "image": "",
+            "options": [
+                "Copying the code already written",
+                " Using the code already written once",
+                "Using already defined functions in programming language",
+                "Using the data and functions into derived segment"
+            ]
+        },
+        {
+            "question": "2.How many basic types of inheritance are provided as OOP feature?",
+            "image": "",
+            "options": [
+                "4",
+                "3",
+                "2",
+                "1"
+            ]
+        },
+        {
+            "question": "3.Which among the following best defines single level inheritance?",
+            "image": "",
+            "options": [
+                "A class inheriting a derived class",
+                "A class inheriting a base class",
+                "A class inheriting a nested class",
+                " A class which gets inherited by 2 classes"
+            ]
+        },
+        {
+            "question": "4.Which among the following is correct for multiple inheritance?",
+            "image": "",
+            "options": [
+                "class student{public: int marks;}s; class stream{int total;}; class topper:public student, public stream{ };",
+                "class student{int marks;}; class stream{ }; class topper: public student{ };",
+                "class student{int marks;}; class stream:public student{ };",
+                "class student{ }; class stream{ }; class topper{ };"
+            ]
+        },
+        {
+            "question": "5.Which programming language doesn’t support multiple inheritance?",
+            "image": "",
+            "options": [
+                " C++ and Java",
+                "C and C++",
+                "Java and SmallTalk",
+                "Java"
+            ]
+        },
+        {
+            "question": "6.Which among the following is correct for a hierarchical inheritance?",
+            "image": "",
+            "options": [
+                "Two base classes can be used to be derived into one single class",
+                " Two or more classes can be derived into one class",
+                " One base class can be derived into other two derived classes or more",
+                "One base class can be derived into only 2 classes"
+            ]
+        },
+        {
+            "question": "7.Which access type data gets derived as private member in derived class?",
+            "image": "",
+            "options": [
+                "Private",
+                "Public",
+                "protected",
+                "Protected and Public"
+            ]
+        },
+        {
+            "question": "8.If a base class is inherited in protected access mode then which among the following is true?",
+            "image": "",
+            "options": [
+                "Public and Protected members of base class becomes protected members of derived class",
+                "Only protected members become protected members of derived class",
+                "Private, Protected and Public all members of base, become private of derived class",
+                "Only private members of base, become private of derived class"
+            ]
+        },
+        {
+            "question": "9.Members which are not intended to be inherited are declared as ",
+            "image": "",
+            "options": [
+                "Public members",
+                "Protected members",
+                "Private or Protected members",
+                "Private members"
+            ]
+        },
+        {
+            "question": "10.Which type of inheritance leads to diamond problem?",
+            "image": "",
+            "options": [
+                "Single level",
+                "Multi-level",
+                "Multiple",
+                "Hierarchical"
+            ]
+        }
+        
+
+
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
 
 {% block CodeArena %}
 <div class="template-container">
 </div>
 <template id="code-question-template">
     <div class="code-question">
-        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
         <p id="code-question-desc"></p>
         <div class="row">
-            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
                 <p class="heading2 imp my-2">Input</p>
             </div>
-            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
                 <p class="heading2 imp my-2">Output</p>
             </div>
 
@@ -330,9 +275,9 @@
                 <div>
                     <div class="heading2 mt-3">Output</div>
                     <div class="code-area-output text-wrap">
-                        <pre></pre>
+                        <pre class="output"></pre>
                     </div>
-                    <pre id="code-question-summary"></pre>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
                 </div>
             </div>
         </div>
@@ -342,43 +287,23 @@
 <div class="certificate container p-5"></div>
 
 <script>
-    let mcqs = [
-        {
-            "question": "What is the name of Mercury?",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
-            "options": [
-                "Mercury",
-                "Earth",
-                "Abhay",
-                "Amey"
-            ]
-        },
-        {
-            "question": "Karandak kon jeeta?",
-            "image": "",
-            "options": [
-                "COMP",
-                "MECH",
-                "INSTRU",
-                "CHEM"
-            ]
-        }
-    ];
+    let expt = "Inheritance in OOPS";
     let problems = [
         {
-            "title": "Sort the array using Insertion sort",
-            "desc": "You have given an array <i>A<i> of <i>n<i> integers.You have to sort the array and print it using insertion sort.",
-            "inputs": ["8 2 4 5 1 2 4 5 9"],
-            "outputs": ["1 2 2 4 4 5 5 9"]
+            "title": "1. Family Tree 👪",
+            "desc": '<p class="para">Create a class named <span class="code">GrandFather</span> inherit a class named <span class="code">Father</span> from it. Lastly inherit <span class="code">Son</span> from the Father class.<br><br> Create a method <span class="code">printTree()</span> in all the classes, which prints the names of grandfather, father and son as per the output format.<br><br>Take the input names and form their family tree.</p>',
+            "inputs": ["Rajesh Manish Ram"],
+            "outputs": ["Rajesh(grandfather) -> Manish(father) -> Ram(son)"]
         },
         {
-            "title": "Find position of each element in sorted array",
-            "desc": "You have been given an A array consisting of <i>n<i> integers. All the elements in this array are guaranteed to be <b>unique<b>. For each position i in the array <i>A<i> you need to find the position of <i>A[i]<i> should be present in, if the array was a sorted array. You need to find this for each <i>i<i> and print the resulting solution.",
-            "inputs": ["5 8 3 5 2 1"],
-            "outputs": ["5 3 4 2 1"]
-        },
+            "title": "1. Multiple Inheritance in Animals 🐬🐱",
+            "desc": '<p class="para"><span class="imp">Mammals</span> are the animals which do not lay eggs to give birth. Most of the <span class="imp">fishes are not mammals</span> .<br><br><span class="code">Whale</span> is a special case of <span class="code">fish</span> which is a <span class="code">mammal</span> .<br><br>Create a program with two classes namely <span class="code">Mammals</span> and <span class="code">Fishes</span> , from these classes inherit a class <span class="code">Whale</span> .<br><br>Display the <spam class="imp">details of object</spam> of each class as shown in the output.</p>',
+            "inputs": ["No Input"],
+            "outputs": ["mammal1 : I am a Mammal.<br>fish1 : I am a Fish.<br>whale1 : I am both a Mammal and a Fish."]
+        }
+        
     ];
 </script>
-<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
 {% endblock CodeArena %}

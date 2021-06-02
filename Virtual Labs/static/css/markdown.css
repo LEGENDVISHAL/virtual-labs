@@ -5,13 +5,13 @@
 
 .heading2{
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .para{
     font-size: 0.98rem;
     font-weight: 400;
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 .italic{
@@ -27,9 +27,13 @@
 }
 
 .imp{
-    color: rgb(151, 73, 252);
+    color: rgb(122, 40, 228);
     font-weight: 600;
     font-size: 1rem;
+}
+
+.img-xsm{
+    width:20%;
 }
 
 .img-sm{
@@ -54,6 +58,18 @@
 pre > code{
     width: 80%;
     height: 300px;
+}
+
+.text-purple{
+    color: rgb(122, 40, 228);
+}
+
+.output{
+    font-family: monospace;
+    background-color: rgb(252, 251, 230);
+    border: 0.5px solid rgb(247, 223, 144);
+    border-radius: 3px;
+    padding:2px 5px;
 }
 
 

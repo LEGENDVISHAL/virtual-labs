@@ -22,8 +22,8 @@
 <script>hljs.highlightAll();</script>
 <p class="heading1" id="intro">Introduction</p>
 
-<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in ascending or
-    descending Insertion sort can be used.</p>
+<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in <span class="imp">ascending or
+    descending</span> Insertion sort can be used.</p>
 
 <p class="heading1" id="principle">Principle of Insertion Sort</p>
 
@@ -39,15 +39,15 @@
     correct position and we continue. <br><br>
     3. And If not, then we have to put it at correct position via comparing all elements behind and <span
         class="imp">moving them 1 step ahead until</span> we find correct position for that current element. <br><br>
-    4. By the end of <span class="code">all iterations</span> we get whole array sorted.</p>
+    4. By the end of all iterations we get <span class="imp">whole array sorted</span> .</p>
 
 <p class="heading1" id="example">Example</p>
-<p class="para">1. Take example of arr [6, 2, 3, 5, 9, 8, 1] of n=7 elements. First step is to iterate through arr from
+<p class="para">1. Take example of <span class="code">arr = [6, 2, 3, 5, 9, 8, 1]</span> of <span class="code">n=7</span> elements. First step is to iterate through arr from
     index 1. <br><br>
 
-    2. So at index i=1 check consider [6,2] so 2 is not in its correct position i.e. compare 2 with previous elements
+    2. So at index <span class="code">i=1</span> check consider <span class="code">[6,2]</span> so 2 is not in its correct position i.e. <span class="imp">compare 2 with previous elements</span> .
     and move them to right until we find a smaller element than 2. so here 6 will be moved to index 1 and then assign 2
-    to its correct position so now array till index 1 is sorted. [2, 6] <br><br>
+    to its correct position so now array till index 1 is sorted. <span class="code">[2, 6]</span> <br><br>
     3. Similarly as step 2 for each i do same things and at finally whole array will be sorted. See the image below for
     better understanding.</p>
 
@@ -288,7 +288,7 @@
 {% endblock Analysis %}
 
 {% block Simulation %}
-
+<iframe src="https://editor.p5js.org/ritesh-dt/embed/oK3SQWrc6" width="740" height="560"></iframe>
 {% endblock Simulation %}
 
 {% block CodeArena %}
@@ -296,13 +296,13 @@
 </div>
 <template id="code-question-template">
     <div class="code-question">
-        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
         <p id="code-question-desc"></p>
         <div class="row">
-            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
                 <p class="heading2 imp my-2">Input</p>
             </div>
-            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
                 <p class="heading2 imp my-2">Output</p>
             </div>
 
@@ -330,9 +330,9 @@
                 <div>
                     <div class="heading2 mt-3">Output</div>
                     <div class="code-area-output text-wrap">
-                        <pre></pre>
+                        <pre class="output"></pre>
                     </div>
-                    <pre id="code-question-summary"></pre>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
                 </div>
             </div>
         </div>
@@ -342,43 +342,22 @@
 <div class="certificate container p-5"></div>
 
 <script>
-    let mcqs = [
-        {
-            "question": "What is the name of Mercury?",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
-            "options": [
-                "Mercury",
-                "Earth",
-                "Abhay",
-                "Amey"
-            ]
-        },
-        {
-            "question": "Karandak kon jeeta?",
-            "image": "",
-            "options": [
-                "COMP",
-                "MECH",
-                "INSTRU",
-                "CHEM"
-            ]
-        }
-    ];
+    let expt = "Insertion Sort";
     let problems = [
         {
-            "title": "Sort the array using Insertion sort",
-            "desc": "You have given an array <i>A<i> of <i>n<i> integers.You have to sort the array and print it using insertion sort.",
+            "title": "1. Sort the array using Insertion sort",
+            "desc": '<p class="para">You have given an array <span class="code">A</span> of <span class="code">n</span> integers. You have to sort the array and print it using <span class="code">Insertion Sort</span> .</p>',
             "inputs": ["8 2 4 5 1 2 4 5 9"],
             "outputs": ["1 2 2 4 4 5 5 9"]
         },
         {
-            "title": "Find position of each element in sorted array",
-            "desc": "You have been given an A array consisting of <i>n<i> integers. All the elements in this array are guaranteed to be <b>unique<b>. For each position i in the array <i>A<i> you need to find the position of <i>A[i]<i> should be present in, if the array was a sorted array. You need to find this for each <i>i<i> and print the resulting solution.",
+            "title": "2. Find position of each element in sorted array",
+            "desc": '<p class="para">You have been given an array <span class="code">A</span> consisting of <span class="code">n</span> integers.<br><br>All the elements in this array are guaranteed to be <span class="imp">unique</span> .<br><br>For each position <span class="code">i</span> in the array <span class="code">A</span> you need to find the position of <span class="code">A[i]</span> should be present in, if the array was a <span class="imp">sorted array</span>.<br><br>You need to find this for each <span class="code">i</span> and print the resulting solution.</p>',
             "inputs": ["5 8 3 5 2 1"],
             "outputs": ["5 3 4 2 1"]
         },
     ];
 </script>
-<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
 {% endblock CodeArena %}
+

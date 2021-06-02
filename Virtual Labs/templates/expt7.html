@@ -1,0 +1,309 @@
+{% extends 'expt_layout.html' %}
+{% block expt_title %}Polymorphism in OOPS{% endblock expt_title %}
+{% block toc %}
+
+<div class="list-group-flush p-0 mx-1">
+    <a href="#intro" class="list-group-item">1. Introduction</a>
+    <a href="#types" class="list-group-item">2. Types Of Polymorphism</a>
+    <div class="list-group-flush p-0 mx-3">
+        <a href="#Compile_time" class="list-group-item">2.1 Compile Time Polymorphism:</a>
+        <a href="#Run_time" class="list-group-item">2.2 Run Time Polymorphism:</a>
+    </div>
+    <a href="#implement" class="list-group-item">3. Implementation</a>
+
+
+
+
+</div>
+{% endblock toc %}
+
+{% block Theory %}
+<script>hljs.highlightAll();</script>
+<p class="heading1" id="intro">Introduction</p>
+The word <span class="code">Polymorphism</span> is consist of <span class="imp">Poly + morphs </span> which means <span
+    class="imp">Many + Forms</span>.
+A real-life example of  polymorphism, a <span class="imp">student</span> at the same time can have different characteristics, like a <span class="imp">Boy</span> at the same time is a <span class="imp">student</span>, a <span class="imp">son</span>,or a <span class="imp">worker</span>.
+ So we can say that the same <span class="imp"> person</span> may have different behavior in different situations. This terminology is  called polymorphism. 
+Polymorphism is known as one of the <span class="imp">important features</span> of Object Oriented Programming
+
+
+</p>
+<p class="heading1" id="types">Types of Polymorphism:</p>
+<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt7/img1.png') }}" alt="img1">
+<br>
+<br>
+<p class="heading1" id="Compile_time">Compile Time Polymorphism:</p>
+<p class="para">Compile time Polymorphism is achieved by <span class="code">Function Overloading</span> and <span
+        class="code">Operator Overloading</span>.
+
+
+</p>
+<p class="heading1" id="intro">Function Overloading:</p>
+<p class="para"> When there are multiple functions with same name but different arguments then these functions are said
+    to be overloaded.
+    Functions are also br overloaded by change in number of arguments or by change in the type of the arguments. <br>
+    <br>
+    Let see this with an Example.
+    <br><br>
+</p>
+<p class="heading1">Example</p>
+<p class="para">1. Here we are declared one <span class="imp">class</span> named as <span class="imp">Student</span>. <br><br>
+    2. In that class we created single function named <span class="code">Display</span> <br><br>
+    3. This <span class="code">Display</span> function acts differently in three different situation which
+    is property of <span class="imp">Polymorphism</span><br></p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<pre><code class="language-cpp center" >#include &lt;bits/stdc++.h&gt;
+        using namespace std;
+        
+        // Class Student
+        class Student  
+        {
+            public:
+            
+            // function with 1 int parameter
+            void Display(int marks)
+            {
+                cout &lt;&lt; &quot;Marks= &quot; &lt;&lt; marks&lt;&lt; endl;
+            }
+            
+            // function with same name having 1 double parameter
+            void Display(double percentage)
+            {
+                cout &lt;&lt; &quot;Percentage= &quot; &lt;&lt; percentage &lt;&lt; endl;
+            }
+            
+            // function with same name and string parameters
+            void Display(string Div)
+            {
+                cout &lt;&lt; &quot;Name of Div is: &quot; &lt;&lt;Div&lt;&lt; endl;
+            }
+        };
+        
+        // Main Function
+        int main() {
+            
+            Student s1;
+            
+            // Which function is called will depend on the parameters passed
+            // The first 'Display' is called
+            s1.Display(10);
+            
+            // The second 'Display' is called
+            s1.Display(90.50);
+            
+            // The third 'func' is called
+            s1.Display(&quot;C&quot;);
+            return 0;
+        }
+        </code></pre>
+
+
+<br>
+<br>
+
+
+<p class="heading1" id="intro">Operator Overloading:</p>
+<p class="para"> Operator overloading is also a <span class="imp">compile-time polymorphism</span> in which we overload
+    an operator.
+    Basically it is used to perform the operation on the<span class="imp">user-defined</span> data types.
+    For example in C++ we can add the variables of the user-defined data type that is applied to the built-in data
+    types.
+    <br> <br>
+    Let see this with an Example.
+    <br><br>
+</p>
+<p class="heading1">Example</p>
+<p class="para">1. Here we are declared one <span class="imp">class</span> named as <span class="imp">Student</span>. <br><br>
+    2. In that class we created <span class="code">void operator ++()</span> function.<br><br>
+</p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    class Student   // creating class Student
+    {
+    private:
+        int marks;
+    
+    public:
+        Student() : marks(10) {}
+        void operator++()                        // Defining Function 
+        {
+            marks = marks + 2;
+        }
+        void Print()
+        {
+            cout &lt;&lt; &quot;The Count is: &quot; &lt;&lt; marks;
+        }
+    };
+    int main()
+    {
+        Student s1;
+        ++s1; // calling of a function &quot;void operator ++()&quot;
+        s1.Print();
+        return 0;
+    }
+        </code></pre>
+
+
+<br>
+<br>
+
+
+<p class="heading1" id="Run_time">Run Time Polymorphism:</p>
+<p class="para">Run Time Polymorphism is achieved by <span class="code">Function Overriding.
+        <p class="para"> If we define the same function in the derived class which is already available in the Base
+            class then it is known as Function Overriding.
+            In C++. Basically it is used to achieve runtime polymorphism.
+            With help of this you can provide specific implementation of the function which is already provided by its
+            base class
+            <br>
+            <br>
+            Let see this with an Example.
+            <br><br>
+        </p>
+        <p class="heading1">Example</p>
+        <p class="para">1. Here we are declared one <span class="imp">class</span> named as <span class="imp"> Car</span>. <br><br>
+            2. In that class we overriding <span class="code">Drive()</span> function.<br><br>
+        </p>
+        
+<p class="heading1" id="implement">Implementation</p>
+<pre><code class="language-cpp center" >
+    #include &lt;iostream&gt;
+    using namespace std;
+    // Created base class Car
+    class Car
+    {
+    public:
+        // Difining  Drive function in base class.
+        void Drive()
+        {
+            cout &lt;&lt; &quot;Driving...&quot;;
+        }
+    };
+    class Audi : public Car
+    {
+    public:
+        void Drive() // defined  same function which is already prseny in base class Car
+        {
+            cout &lt;&lt; &quot;Driving Audi...&quot;;
+        }
+    };
+    int main(void)
+    {
+        Audi a1 = Audi();
+        a1.Drive();
+        return 0;
+    }
+      
+        </code></pre>
+
+
+
+
+        {% endblock Theory %}
+
+{% block Simulation %}
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
+{% endblock Simulation %}
+
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple mb-2" id="mcq-question" ></div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
+
+{% block CodeArena %}
+<div class="template-container">
+</div>
+<template id="code-question-template">
+    <div class="code-question">
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
+        <p id="code-question-desc"></p>
+        <div class="row">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
+                <p class="heading2 imp my-2">Input</p>
+            </div>
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
+                <p class="heading2 imp my-2">Output</p>
+            </div>
+
+            <p class="heading2 mt-4">Program</p>
+            <div class="row">
+                <div class="col-3">
+                    <select class="code-lang form-select form-select-sm">
+                        <option value="c">C</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                        <option value="python3">Python</option>
+                        <option value="javascript">JavaScript</option>
+                    </select>
+                </div>
+
+                <div class="col-auto text-right">
+                    <button class="run-button btn btn-sm">
+                        Run <i class="fas fa-play fa-sm"></i>
+                    </button>
+                </div>
+                <div class="col-12 mt-3">
+                    <textarea class="code-area" id="code-question-area"></textarea>
+                </div>
+
+                <div>
+                    <div class="heading2 mt-3">Output</div>
+                    <div class="code-area-output text-wrap">
+                        <pre class="output"></pre>
+                    </div>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</template>
+<div class="certificate container p-5"></div>
+
+<script>
+    let expt = "Polymorphism in OOPS";
+    let problems = [
+        {
+            "title": "1. Animal Sounds 🐶🐮🔊",
+            "desc": '<p class="para">Different animals make different kinds of sounds.<br><br>Make three classes namely <span class="code">Cat</span> , <span class="code">Dog</span> and <span class="code">Cow</span> with a <span class="imp">common method</span> called <span class="code">makeSound()</span> .<br><br><span class="imp">Print the sounds</span> of each animal when its object is created.</p>',
+            "inputs": ["Cow cw1","Cat ct1","Dog dg1"],
+            "outputs": ["cw1 : mooh mooh","ct1 : meow meow", "dg1 : boww woww"]
+        },
+        {
+            "title": "2. Co-ordinates Addition ➕",
+            "desc": '<p class="para">Make a class <span class="code">Point</span> with data members <span class="code">x</span> and <span class="code">y</span> .<br><br>Overload the <span class="code">(+) Operator</span> to add the <span class="imp">x co-ordinate</span> of one object to the other object, same for the <span class="imp">y co-ordinate</span>.<br><br>Display the Addition for the points given in the input section.</p>',
+            "inputs": ["5 10, 21 7","-8 20, 34 13"],
+            "outputs": ["26 17","26 33"]
+        },
+    ];
+</script>
+
+<script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
+
+{% endblock CodeArena %}
+
+
+
+

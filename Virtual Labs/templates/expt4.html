@@ -1,17 +1,17 @@
 {% extends 'expt_layout.html' %}
-{% block expt_title %}Insertion Sort{% endblock expt_title %}
+{% block expt_title %}Constructors And Destructors{% endblock expt_title %}
 {% block toc %}
 
 <div class="list-group-flush p-0 mx-1">
     <a href="#intro" class="list-group-item">1. Introduction</a>
-    <a href="#principle" class="list-group-item">2. Principle of Insertion Sort</a>
-    <a href="#algo" class="list-group-item">3. Algorithm Steps</a>
-    <a href="#example" class="list-group-item">4. Example</a>
-    <a href="#implement" class="list-group-item">5. Implementation</a>
+    <a href="#Key Points" class="list-group-item">2. Key Points</a>
+    <a href="#types" class="list-group-item">3. Types Of Constructors</a>
     <div class="list-group-flush p-0 mx-3">
-        <a href="#cpp_imple" class="list-group-item">5.1 C++ Implementation</a>
-        <a href="#python_imple" class="list-group-item">5.2 Python Implementation</a>
+        <a href="#default_cons" class="list-group-item">3.1 Default Constructor</a>
+        <a href="#para_cons" class="list-group-item">3.2 Parameterized Constructor</a>
+        <a href="#copy_cons" class="list-group-item">3.3 Copy Constructor</a>
     </div>
+    <a href="#destructor" class="list-group-item">4. Destructors</a>
 
 
 
@@ -22,287 +22,393 @@
 <script>hljs.highlightAll();</script>
 <p class="heading1" id="intro">Introduction</p>
 
-<p class="para">Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in ascending or
-    descending Insertion sort can be used.</p>
+<p class="para">Constructors are the special methods that are <span class="imp">called or invoked automatically</span> when the object
+    of the class is created.</p>
 
-<p class="heading1" id="principle">Principle of Insertion Sort</p>
+<p class="heading1" id="Key Points">Key Points:</p>
 
-<p class="para">The array is divided in two parts <span class="italic">(not actually)</span> left part is sorted and
-    right part is unsorted. By Iterating from left to right and moving our line which divides to right we make whole
-    array sorted.</p>
+<p class="para">Name of the constructor should be <span class="imp">same as name of the class</span>
+    <br><br>
+    Constructors are always <span class="code">Public</span> .
+    <br><br>
+    Constructors does not have any <span class="code">return</span> type. <br>
+</p>
 
-<p class="heading1" id="algo">Algorithm Steps</p>
+<p class="heading1" id="types">Types Of Constructors</p>
+<img class="img-md d-flex center" src="{{ url_for('static', filename='img/expt4/img1.png') }}" alt="img2">
+<br>
+<br>
 
-<p class="para">1. Iterate through array from index 1 to n-1 i.e. iterate whole array as 0th element is already sorted.
-    <span class="italic">(0 base indexing)</span> <br><br>
-    2. At each iteration check if current element is greater than previous element If it is, then current element is at
-    correct position and we continue. <br><br>
-    3. And If not, then we have to put it at correct position via comparing all elements behind and <span
-        class="imp">moving them 1 step ahead until</span> we find correct position for that current element. <br><br>
-    4. By the end of <span class="code">all iterations</span> we get whole array sorted.</p>
 
-<p class="heading1" id="example">Example</p>
-<p class="para">1. Take example of arr [6, 2, 3, 5, 9, 8, 1] of n=7 elements. First step is to iterate through arr from
-    index 1. <br><br>
 
-    2. So at index i=1 check consider [6,2] so 2 is not in its correct position i.e. compare 2 with previous elements
-    and move them to right until we find a smaller element than 2. so here 6 will be moved to index 1 and then assign 2
-    to its correct position so now array till index 1 is sorted. [2, 6] <br><br>
-    3. Similarly as step 2 for each i do same things and at finally whole array will be sorted. See the image below for
-    better understanding.</p>
+   <p class="heading1" id="default_cons">1. Default Constructors :</p>     
+<p class="para"> Basically Default constructors does <span class="imp">not have any parameters</span>
+    <br><br>
 
-<img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt1/img1.png') }}" alt="img1">
+
+    Let see this with an Example.</p>
+
+<p class="heading1">Example</p>
+<p class="para">1. Here we are declared one class named as Student. <br><br>
+    2. In that class we created a default constructor, same name as class i.e <span class="code">Student()</span> <br><br>
+    3. In Main function first we created the object <span class="code">s1</span> of class Student and as soon as we create the object constructor
+    will be called and
+    we will get a respected output. <br></p>
+
+
 
 <p class="heading1" id="implement">Implementation</p>
 <p class="heading2" id="cpp_imple">C++ implementation</p>
 <pre><code class="language-cpp center" >#include &lt;iostream&gt;
-        using namespace std;
-        
-        // Insertion sort function
-        void Insertion_Sort(int arr[], int n)
+    using namespace std;
+    
+    class Student
+    {
+    public:
+        Student()
         {
-            int i, j, cur;
-            // Iterate thorugh array
-            for (i = 1; i &lt; n; i++)
-            {
-                // Store current element in cur
-                cur = arr[i];
-                
-                // Iterating variable for finding
-                // correct position of current element
-                j = i - 1;
+            cout &lt;&lt; &quot;Welcome to Virtual Lab&quot;;
+        }
+    };
+    
+    int main()
+    {
+        Student s1;
+        return 0;
+    }</code></pre>
+
+
+<br>
+<br>
+
+
+
+    <p class="heading1" id="para_cons">2. Parameterized Constructors :</p>
+
+       <p class="para">In Parameterized constructor <span class="imp">arguments can be passed to the constructor.</span>
+
+        <br> <br>
         
-                // Iterate on behind the current element
-                // Until we reach start of array or arr[j]&gt;cur
-                while (j &gt;= 0 &amp;&amp; arr[j] &gt; cur)
-                {
-                    // Each step assign arr[j] to arr[j+1]
-                    // i.e. move element ahead
-                    arr[j + 1] = arr[j];
-                    
-                    // Decrement j
-                    j--;
-                }
+        Let see the example of Parameterized Constructor.
+        <br><br></p> 
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as <span class="code">Student</span> and here we are taken two variables <span class="code"> a </span> and <span class="code"> b </span> which are
+    public. <br><br>
+    2. In that class we created one parameterized constructor, same name as class i.e Student(). and it will take to
+    arguments which are int type.<br><br>
+    3. In main function we created object of class Student and pass two integers to it as its a parameterized
+    constructors.and below we simply printed the values. </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student
+    {
+        public:
+            int a,b;
+    
+        Student(int x,int y)
+        {
+            a=x;
+            b=y;
+        }
+    
+       
+    };
+    
+    int main()
+    {
+        Student s1(5,10);
+        cout&lt;&lt;s1.a&lt;&lt;&quot; &quot;&lt;&lt;s1.b&lt;&lt;endl;
+        return 0;
+    }</code></pre>
+
+<br>
+<br>
+
+
+
+       <p class="heading1" id="copy_cons"> 3. Copy Constructors:</p>
+        <p class="para">
+    Copy constructor is also a member function of class basically it initialize the
+    object of class with the help of another object of same class.
+
+    <br><br>
+
+
+    Let see the example of Copy Constructor.
+    <br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as Student. and declared one variable named as Marks. <br><br>
+    2. In that class we created a parameterized constructor, same name as class i.e Student(). and it will take one
+    parameter of type integer. <br><br>
+    3. Below that we create one <span class="imp">copy constructor</span> . <br><br>
+    4. In main function we created one object <span class="code">s1</span> of class Student and passed <span class="code">100</span> value as paremeter after that we called
+    the copy constructor and pass old object
+    i.e s1 to that copy constructor. <br> </p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >#include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student(int m1)            // Parameterized Constructor
+        {
+            marks = m1;
+        }
+    
+        Student(Student &amp;m2)      //  Copy Constructor
+        {
+            marks = m2.marks;
+        }
+    };
+    
+    int main()
+    {
+        Student s1(100);        //    Calling Parameterized Constructor
+        Student s2(s1);         //    Calling Copy Constructor
+    
+        cout &lt;&lt; s1.marks &lt;&lt; endl;
+        cout &lt;&lt; s2.marks &lt;&lt; endl;
+        return 0;
+    }
+    
+     </code></pre>
+
+<br>
+<br>
+
+<p class="heading1" id="destructor">4. Destructors</p>
+<p class="para">
         
-                // We found correct position for cur
-                // i.e j+1 so assign that to cur
-                arr[j + 1] = cur;
-            }
+    Destructor is also a member function which destructs the objects of the class. <br><br>
+    <span class="heading2">Syntax of Destructor:</span> <span class="code">~Constructor Name()</span>
+
+    <br>
+<p class="heading1" id="Key Points">Key Points:</p>
+1. Destructors have same name as class but we have to place tild sign <span class="code"> ~</span> before it. <br><br>
+2. Destructors are <span class="imp">automatically called when the objects is destroyed.</span> <br><br>
+3. Destructors does not have any <span class="code">return</span> type. <br><br>
+4. Destructors <span class="imp">does not take any arguments.</span> <br><br>
+5. Destructors can not be declared <span class="code">static</span> or <span class="code">const</span> . <br>
+<br>
+
+
+Let see the example of Copy Constructor.
+<br><br>
+
+</p>
+<p class="heading1" id="example">Example</p>
+<p class="para">1. Here we are declared one class named as Student . and declared one variable named as <span class="code">marks</span> . <br><br>
+    2.In that class we created a Parameterized constructor, same name as class i.e <span class="code">Student()</span> . <br><br>
+    3.Below that we create a one Destructor. <br><br>
+    4.In main function we created one object <span class="code">s1</span> of class Student as soon as we created the object, constructor is
+    automatically invoked
+    and after that below Destructor will be invoked. <br><br>
+    5. We kept printing the statements in constructor and destructor to understand the execution of given constructors
+    and destructors.
+
+
+
+</p>
+
+
+<p class="heading1" id="implement">Implementation</p>
+<p class="heading2" id="cpp_imple">C++ implementation</p>
+<pre><code class="language-cpp center" >
+    #include &lt;iostream&gt;
+    using namespace std;
+    
+    class Student                                       // class students
+    {
+    
+    public:
+        int marks;
+    
+        Student()                                            // Constructor Created 
+        {
+            cout&lt;&lt;&quot;Constructor Called Here&quot;&lt;&lt;endl;
         }
         
-        // Display array function 
-        void Display_Array(int arr[], int n)
+        ~Student()                                          //  Destructor Created
         {
-            cout&lt;&lt;&quot;Displaying Array...    : &quot;;
-            for (int i = 0; i &lt; n; i++)
-                cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-            cout &lt;&lt; endl;
+            cout&lt;&lt;&quot;Destructor Called Here&quot;&lt;&lt;endl;          
         }
+    
         
-        // Main Function
-        int main()
-        {
-            // Sample array we can take input from user also
-            int arr[] = {6, 2, 3, 5, 9, 8, 1};
-        
-            // Number of elements
-            int n = sizeof(arr) / sizeof(arr[0]);
-        
-            // Displaying array before sorting
-            Display_Array(arr, n);
-        
-            // Calling function insertion sort
-            Insertion_Sort(arr, n);
-        
-            // Displaying array after sorting
-            Display_Array(arr, n);
-        
-            return 0;
-        }</code></pre>
+    };
+    
+    int main()
+    {
+        Student s1;     // creating object
+        return 0;
+    }
+    
+     </code></pre>
 
-<p class="heading2" id="python_imple">Python implementation</p>
-
-<pre><code class="language-python center"># Insertion sort function
-            def Insertion_Sort(arr,n):
-                for i in range(1,n):
-                    cur = arr[i]
-                    j = i - 1
-                    while (j &gt;= 0 and arr[j] &gt; cur):
-                        arr[j + 1] = arr[j]
-                        j-=1
-                    arr[j + 1] = cur
-            
-            # Display array function 
-            def Display_Array(arr,n):
-                print(&quot;Displaying Array...    : &quot;,end=&quot;&quot;)
-                for i in range(n):
-                    print(arr[i],end=&quot; &quot;)
-                print()
-            
-            # Main program
-            arr = [6, 2, 3, 5, 9, 8, 1]
-            n = len(arr)
-            
-            # Displaying array before sorting
-            Display_Array(arr, n)
-            
-            # Calling function insertion sort
-            Insertion_Sort(arr, n)
-            
-            # Displaying array after sorting
-            Display_Array(arr, n)</code></pre>
-
+<br>
+<br>
 
 
 
 {% endblock Theory %}
 
-{% block Analysis %}
-
-<div class="container img-lg d-flex center">
-    <canvas id="myChart"></canvas>
-</div>
-
-<script>
-    let myChart = document.getElementById('myChart').getContext('2d');
-
-    // Global Options
-    Chart.defaults.global.defaultFontFamily = 'Poppins';
-    Chart.defaults.global.defaultFontSize = 16;
-    Chart.defaults.global.defaultFontColor = '#777';
-
-    let massPopChart = new Chart(myChart, {
-        type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
-        data: {
-            labels: ['1000', '5000', '10000', '50000', '100000', '200000'],
-            datasets: [{
-                label: "Insertion Sort",
-                backgroundColor: [
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)',
-                    'rgba(0, 0, 255, 0.4)'
-                    
-                    
-                    
-                    
-                ],
-                data: [0, 0.045, 0.18, 4.25, 17.62, 69.12]
-            },
-            {
-                label: "Selection Sort",
-                backgroundColor: [
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)',
-                    'rgba(255,0,0,0.4)'
-                   
-
-                ],
-                data: [0, 0, 0.9, 6.25, 26.35, 100.3]
-            },
-            {
-                label: "Bubble Sort",
-                color: '#9CBABA',
-                backgroundColor: [
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)',
-                    'rgba(0,255,0,0.4)'
-                    
-                ],
-                data: [0, 0.145, 0.6, 14.05, 56.9, 229.44]
-            },
-            {
-                label: "Quick Sort",
-                backgroundColor: [
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)',
-                    'rgba(255,0,255,0.4)'
-                    
-
-                ],
-                data: [0, 0, 0, 0.01, 0.02, 0.05]
-            },
-
-            ]
-
-        },
-        options: {
-            title: {
-                display: true,
-                text: 'Performance Of Sorting Algorithm',
-                fontSize: 18
-            },
-            legend: {
-                display: true,
-                position: 'right',
-                labels: {
-                    fontColor: '#000'
-                }
-            },
-            layout: {
-                padding: {
-                    left: 50,
-                    right: 0,
-                    bottom: 0,
-                    top: 0
-                }
-            },
-            scales: {
-                yAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Time in seconds'
-                    }
-                }],
-                xAxes: [{
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Number of elements'
-                    }
-                }]
-            },
-
-            tooltips: {
-                enabled: true
-            }
-        }
-    });
-</script>
-<p class="para p-5">We will analyze and compare different sorting algorithms on the basis of different parameters like <span class="imp">Time Complexity, In-place, Stability,</span> etc.The above graph is for the comparison of insertion sort, Bubble sort, Quick sort and selection sort  on the basis on time. <br><br>
-    In a comparison based sorting algorithms, we compare elements of an array with each other to determines which of two elements should occur first in the final sorted list. <br><br>
-    All comparison-based sorting algorithms have a complexity lower bound of <span class="code">nlogn</span> (Think!) <br><br>
-    Here is the comparison of time and space complexities of some popular comparison based sorting algorithms: <br>
-</p>
-<img src="{{ url_for('static', filename='img/expt1/img2.png') }}" alt="" class="img-md d-flex center"> 
-{% endblock Analysis %}
-
 {% block Simulation %}
-
+<div class="alert alert-success text-center">simulation : to be added by Ritesh.</div>
 {% endblock Simulation %}
+
+{% block Analysis %}
+<div class="mcq-container py-2">
+    <template class="my-3" id="mcq-template">
+        <div class="py-4 border-bottom">
+            <div class="my-3 text-center">
+                <img class="img-md rounded" id="mcq-image" src="" alt="Question Image" />
+            </div>
+    
+            <div class="heading1 text-purple my-3" id="mcq-question" >What is the name of Mercury?</div>
+            <div class="option-group" id="mcq-options">
+                {% for i in range(4) %}
+                        <button type="button" class="btn btn-light gradient-head border btn-sm mx-1">{{ loop.index }}. Option</button>
+                {% endfor %}
+            </div>
+        </div>
+    </template>
+</div>
+<script>
+    let mcqs = [
+        {
+            "question": "1. What is the role of a constructor in classes?",
+            "image": "",
+            "options": [
+                "To modify the data whenever required",
+                "To destroy an object",
+                "To initialize the data members of an object when it is created",
+                "To call private functions from the outer world"
+            ]
+        },
+        {
+            "question": "2. Why are constructors efficient instead of a function init() defined by the user to initialize the data members of an object?",
+            "image": "",
+            "options": [
+                "Because user may forget to call init() using that object leading segmentation fault",
+                "Because user may call init() more than once which leads to overwriting values",
+                "Because user may forget to define init() function",
+                "All of the mentioned"
+            ]
+        },
+        {
+            "question": "3. What is a copy constructor?",
+            "image": "",
+            "options": [
+                "A constructor that allows a user to move data from one object to another",
+                "A constructor to initialize an object with the values of another object",
+                "A constructor to check the whether to objects are equal or not",
+                " constructor to kill other copies of a given object."
+            ]
+        },
+        {
+            "question": "4. What happens if a user forgets to define a constructor inside a class?",
+            "image": "",
+            "options": [
+                "Error occurs",
+                "Segmentation fault",
+                "Objects are not created properly",
+                "Compiler provides a default constructor to avoid faults/errors"
+            ]
+        },
+        {
+            "question": "5. What would be behaviour if the constructor has a return type?",
+            "image": "",
+            "options": [
+                "Compilation error",
+                "Runtime error",
+                "Compilation and runs successfully",
+                "Only String return type is allowed"
+            ]
+        },
+        {
+            "question": "6. Which among the following describes a destructor?",
+            "image": "",
+            "options": [
+                "A special function that is called to free the resources, acquired by the object",
+                "A special function that is called to delete the class",
+                "A special function that is called anytime to delete an object",
+                "A special function that is called to delete all the objects of a class"
+            ]
+        },
+        {
+            "question": "7. When a destructor is called?",
+            "image": "",
+            "options": [
+                "After the end of object life",
+                "Anytime in between object’s lifespan",
+                "At end of whole program",
+                "Just before the end of object life"
+            ]
+        },
+        {
+            "question": "8. Which among the following is correct for abstract class destructors?",
+            "image": "",
+            "options": [
+                "It doesn’t have destructors",
+                "It has destructors",
+                "It may or may not have destructors",
+                "It contains an implicit destructor"
+            ]
+        },
+        {
+            "question": "9. If in multiple inheritance, class C inherits class B, and Class B inherits class A. In which sequence are their destructors called if an object of class C was declared?",
+            "image": "",
+            "options": [
+                "~C() then ~B() then ~A()",
+                "~B() then ~C() then ~A()",
+                "~A() then ~B() then ~C()",
+                " ~C() then ~A() then ~B()"
+            ]
+        },
+        {
+            "question": "10. How the constructors and destructors be differentiated?",
+            "image": "",
+            "options": [
+                "Destructor have a return type but constructor doesn’t",
+                "Destructors can’t be defined by the programmer, but constructors can be defined",
+                "Destructors are preceded with a tilde (~) symbol, and constructor doesn’t",
+                " Destructors are same as constructors in syntax"
+            ]
+        }
+
+
+    ];
+</script>
+<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock Analysis %}
 
 {% block CodeArena %}
 <div class="template-container">
 </div>
 <template id="code-question-template">
     <div class="code-question">
-        <div class="heading1 gradient-head my-3" id="code-question-title"></div>
+        <div class="heading1 text-purple my-3" id="code-question-title"></div>
         <p id="code-question-desc"></p>
         <div class="row">
-            <div class="col-3 border rounded mx-2" id="code-question-inputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-inputs">
                 <p class="heading2 imp my-2">Input</p>
             </div>
-            <div class="col-3 border rounded mx-2" id="code-question-outputs">
+            <div class="col-5 border border-secondary rounded mx-2 pb-3" id="code-question-outputs">
                 <p class="heading2 imp my-2">Output</p>
             </div>
 
@@ -330,9 +436,9 @@
                 <div>
                     <div class="heading2 mt-3">Output</div>
                     <div class="code-area-output text-wrap">
-                        <pre></pre>
+                        <pre class="output"></pre>
                     </div>
-                    <pre id="code-question-summary"></pre>
+                    <p class="badge text-success border border-success " id="code-question-summary"></p>
                 </div>
             </div>
         </div>
@@ -342,43 +448,28 @@
 <div class="certificate container p-5"></div>
 
 <script>
-    let mcqs = [
-        {
-            "question": "What is the name of Mercury?",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Planets2013.svg/1600px-Planets2013.svg.png",
-            "options": [
-                "Mercury",
-                "Earth",
-                "Abhay",
-                "Amey"
-            ]
-        },
-        {
-            "question": "Karandak kon jeeta?",
-            "image": "",
-            "options": [
-                "COMP",
-                "MECH",
-                "INSTRU",
-                "CHEM"
-            ]
-        }
-    ];
+    let expt = "Constructor and Destructor";
     let problems = [
         {
-            "title": "Sort the array using Insertion sort",
-            "desc": "You have given an array <i>A<i> of <i>n<i> integers.You have to sort the array and print it using insertion sort.",
-            "inputs": ["8 2 4 5 1 2 4 5 9"],
-            "outputs": ["1 2 2 4 4 5 5 9"]
+            "title": "1. Flying Aeroplanes ✈️",
+            "desc": '<p class="para">Create a class named <span class="code">Aeroplane</span> .<br><br>Print the output as <span class="code">"Aeroplane is Flying"</span> whenever an object is created.<br><br>Use the <span class="imp">default constructor</span> to acheive the result.</p>',
+            "inputs": ["No Input"],
+            "outputs": ["Aeroplane is Flying"]
         },
         {
-            "title": "Find position of each element in sorted array",
-            "desc": "You have been given an A array consisting of <i>n<i> integers. All the elements in this array are guaranteed to be <b>unique<b>. For each position i in the array <i>A<i> you need to find the position of <i>A[i]<i> should be present in, if the array was a sorted array. You need to find this for each <i>i<i> and print the resulting solution.",
-            "inputs": ["5 8 3 5 2 1"],
-            "outputs": ["5 3 4 2 1"]
+            "title": "2. Circles and Rectangles",
+            "desc": '<p class="para">Make a class called <span class="code">Shape</span> .<br><br>Use the same class to take the <span class="code">length</span> and <span class="code">breadth</span> of rectangle and <span class="code">radius</span> in case of circle.<br><br> Make use of <span class="imp">parameterized constructors</span> to take the dimensions based on number of parameters.<br>Input is given as length, breadth and radius respectively.<br><br>Print the area of circle and rectangle as given in the output. Round off answer to 2 decimals. ( <span class="code">π = 3.142</span> )</p>',
+            "inputs": ["4 5 6","23 12 8"],
+            "outputs": ["rectArea: 20, circleArea: 113.09","rectArea: 276, circleArea: 201.06"]
         },
+        {
+            "title": "2. Xerox machine 🖨️",
+            "desc": '<p class="para">Suppose you have a <span class="imp">Xerox machine</span> which copies text from one sheet of paper to other.<br><br>Create a class <span class="code">Paper</span> which has data member <span class="code">text</span>.<br><br>Make use of the <span class="imp">copy constructor</span> to simulate the copying of paper objects using xerox machine.<br><br>Copy the text of paper1 to paper2 as shown in the output.</p>',
+            "inputs": ["paper1, this is the text for paper1"],
+            "outputs": ["paper2, this is the text for paper1"]
+        }
     ];
 </script>
-<script src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
 {% endblock CodeArena %}
