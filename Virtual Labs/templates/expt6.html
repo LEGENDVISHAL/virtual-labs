@@ -24,49 +24,158 @@
 <p class="heading1" id="intro">Introduction</p>
 
 <p class="para">
-    Pathfinding or pathing is the plotting, by a computer application, of the shortest route between two points. It is a more practical variant on solving mazes. <br><br> This field of research is based heavily on Dijkstra's algorithm for finding the shortest path on a weighted graph.
+    <span class="imp"> Pathfinding or pathing</span> is the plotting, by a computer application, of the shortest route between two points. It is a more practical variant on solving mazes. <br><br> This field of research is based heavily on <span class="code">Dijkstra's algorithm</span> for finding the shortest path on a weighted graph. <br><br>
+    Dijkstra doesn’t work for Graphs with negative weight edges, <span class="code"> Bellman-Ford</span> works for such graphs.
 </p>
 
 
 <p class="heading1" id="dijkstra">Dijkstra's Algorithm</p>
 <p class="heading2" id="intro1">What is Dijkstra's Algorithm?</p>
 <p class="para">
-    Given a graph and a source vertex in the graph, find shortest paths from source to all vertices in the given graph. <br><br>
-    In Dijkstra's algorithm shortest path tree is generated with given source as root. <br><br>
-    Maintain two arrays in which included and not included vertices in SPT. <br>
-    Find a vertex which is in the other set (set of not yet included) and has a minimum distance from the source. <br>
-    Repeat above procedure until all nodes are visited.
+    Given a graph and a source vertex in the graph, find <span class="imp"> shortest paths</span> from source to all vertices in the given graph. <br><br>
+    In Dijkstra's algorithm <span class="code">shortest path tree</span> SPT is generated with given source as root. <br><br>
+    Shortest path is not concerned with number of edges, it is about sum of <span class="imp">edge weights</span>.
 </p>
 
 <p class="heading2" id="algo1">Algorithm Steps</p>
 <p class="para">
-    
+    1. For given weighted graph, of vertices <span class="code">V</span>, edges <span class="code">E</span> and <span class="code">adj</span> as a weighted graph and <span class="code">src</span> as a source vertex, we have to find SPT rooted at <span class="code">src</span>. <br><br>
+    2. First make <span class="code">vis</span> array which will store whether a vertex is visited or not and a <span class="imp">Min-heap</span> which can be implemented through <span class="imp">Priority-Queue</span>. <br><br>
+    3. Initially mark all vertices <span class="code">false</span> and declare Min heap of priority queue which will store vertex and <span class="imp">total weight</span> to reach this vertex from src.<br><br>
+    4. Push <span class="code">src</span> and weight as 0 in pq. <br><br>
+    5. Now perform below operation until <span class="code">pq</span> becomes empty. <br> <br>
+    5.1. <span class="code">Remove top priority element</span> that is min element from pq based on weight and store in cur. <br> <br>
+    5.2. If cur vertex is <span class="code">already visited then do nothing</span> and continue as we got minimum edge before this. If cur vertex not visited then mark it visited. <br><br>
+    5.3. Print the cur vertex and cur weight that is <span class="code">minimum weight</span> from src to cur vertex. <br><br>
+    5.4. Push every <span class="code">unvisited neighbour vertex</span> with current weight added to weight of that vertex. <br><br>
+    6. After all procedure we get <span class="imp">Shortest Path Tree.</span> with every vertex and minimum weight from src to vertex.
 </p>
 
 <p class="heading2" id="impl1">C++ implementation</p>
 <pre><code class="language-cpp center" >
-    
+// Dijkstra's Algorithm
+#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+struct CustomCompare
+{
+    bool operator()(const pair&lt;int, int&gt; &amp;a, const pair&lt;int, int&gt; &amp;b)
+    {
+        return a.second &gt; b.second;
+    }
+};
+
+int main()
+{
+    int V, E;
+    cin &gt;&gt; V &gt;&gt; E;
+
+    // weighted graph
+    vector&lt;pair&lt;int, int&gt;&gt; adj[V];
+    for (int i = 0; i &lt; E; i++)
+    {
+        int u, v, w;
+        cin &gt;&gt; u &gt;&gt; v &gt;&gt; w;
+        adj[u].push_back({v, w});
+        adj[v].push_back({u, w});
+    }
+
+    int src;
+    cin &gt;&gt; src;
+
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, CustomCompare&gt; pq;
+    pq.push({src, 0});
+
+    bool vis[V];
+    memset(vis, false, sizeof(vis));
+
+    while (!pq.empty())
+    {
+        auto cur = pq.top();
+        pq.pop();
+
+        if (vis[cur.first])
+            continue;
+        vis[cur.first] = true;
+
+        cout&lt;&lt;cur.first&lt;&lt;&quot; &quot;&lt;&lt;cur.second&lt;&lt;endl;
+
+        for (auto x : adj[cur.first])
+        {
+            if (!vis[x.first])
+                pq.push({x.first, cur.second + x.second});
+        }
+    }
+    return 0;
+}
 </code></pre>
 
 <!-- /////////////////////////////////////////// -->
 <p class="heading1" id="bellman">Bellman-Ford Algorithm</p>
-<p class="heading2" id="intro2">What is Dijkstra's Algorithm?</p>
+<p class="heading2" id="intro2">What is Bellman-Ford's Algorithm?</p>
 <p class="para">
-    Given a graph and a source vertex in the graph, find shortest paths from source to all vertices in the given graph. <br><br>
-    In Dijkstra's algorithm shortest path tree is generated with given source as root. <br><br>
-    Maintain two arrays in which included and not included vertices in SPT. <br>
-    Find a vertex which is in the other set (set of not yet included) and has a minimum distance from the source. <br>
-    Repeat above procedure until all nodes are visited.
+    Dijkstra algorithm doesn't find SPT on graph that contains <span class="imp">negative edge weights.</span> <br><br>
+    <span class="imp">Bellman-Ford</span> works for such graphs. Bellman-Ford is also simpler than Dijkstra and suites well for distributed systems. But time complexity of Bellman-Ford is <span class="code">O(VE)</span>, which is more than Dijkstra. <br><br>
+    Given a graph and a source <span class="code">src</span> in graph, find <span class="code">shortest paths</span> from src to all vertices in the given graph. The graph may contain <span class="imp">negative weight edges.</span>
 </p>
 
 <p class="heading2" id="algo2">Algorithm Steps</p>
-<p class="para">
-    
+<p class="para">        
+    1. For given weighted graph, of vertices <span class="code">V</span>, edges <span class="code">E</span> and <span class="code">edges</span> as a weighted graph and <span class="code">src</span> as a source vertex, we have to find SPT rooted at <span class="code">src</span>. <br><br>
+    2. Now initialize a <span class="code">dist</span> array with <span class="code">INF</span> and <span class="code">dist[src] with 0.</span> Array is representing the distance between src and i<sup>th</sup> vertex. <br><br>
+    3. Just repeat below steps for <span class="code">V-1</span> iterations. <br><br>
+    3.1. For every edge in edges update the <span class="code">dist[v]</span> as minimum of <span class="code">dist[v]</span> and <span class="code">w+dist[u]</span> <br><br>
+    3.2 Algorithm calculates shortest paths in a <span class="imp">bottom-up manner</span> and uses <span class="imp">Dynamic Programming.</span> <br><br>
+    4. After <span class="code">V-1</span> iterations, Print the <span class="code">dist</span> array.
 </p>
 
 <p class="heading2" id="impl2">C++ implementation</p>
 <pre><code class="language-cpp center" >
-    
+// Bellman Ford Algorithm
+#include <bits/stdc++.h>
+using namespace std;
+
+#define INF 1e9
+
+int main()
+{
+    int V, E;
+    cin >> V >> E;
+
+    // weighted graph
+    vector<vector<int>> edges;
+    for (int i = 0; i < E; i++)
+    {
+        int u, v, w;
+        cin >> u >> v >> w;
+        edges.push_back({u, v, w});
+    }
+
+    int src;
+    cin >> src;
+
+    // no negative edge cycle
+    vector<int> dist(V,INF);
+    dist[src] = 0;
+
+    for (int i = 0; i < V - 1; i++)
+    {
+        for (auto e : edges)
+        {
+            int u,v,w;
+            u = e[0], v = e[1], w = e[2];
+            dist[v] = min(dist[v], w + dist[u]);
+        }
+    }
+
+    for (int i = 0; i < V; i++)
+    {
+        cout << dist[i] << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
 </code></pre>
 
 {% endblock Theory %}

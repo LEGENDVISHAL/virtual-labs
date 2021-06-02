@@ -1,7 +1,7 @@
 {% extends 'expt_layout.html' %}
 {% block expt_title %}Inheritance{% endblock expt_title %}
-{% block toc %}
 
+{% block toc %}
 <div class="list-group-flush p-0 mx-1">
     <a href="#intro" class="list-group-item">1. Introduction</a>
     <a href="#needi" class="list-group-item">2. Need of Inheritance</a>
@@ -14,9 +14,6 @@
         <a href="#multilvli" class="list-group-item">4.4 Multilevel Inheritance</a>
         <a href="#hybridi" class="list-group-item">4.5 Hybrid Inheritance</a>
     </div>
-
-
-
 </div>
 {% endblock toc %}
 
@@ -25,28 +22,27 @@
 
 <p class="heading1" id="intro">Introduction</p>
 <p class="para">The capability of a class to derive properties and characteristics from another class is called <span class="imp">Inheritance</span>. It is one of the most important feature of Object Oriented Programming. One of the pillar of OOPS. <br> <br>
-    <b>Child or Sub or Derived class</b> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
-    <b>Parent or Super or Base Class</b> : The class whose properties are inherited by sub class is called Base Class or Super class.
+    <span class="imp">Child or Sub or Derived class</span> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
+    <span class="imp">Parent or Super or Base Class</span> : The class whose properties are inherited by sub class is called Base Class or Super class.
 </p>
 
 <p class="heading1" id="needi">Need of Inheritance</p>
 <p class="para">
-    Inheritance is used to declare characteristics of classes inheriting it,without giving its implementation.
+    Inheritance is used to declare characteristics of classes inheriting it,<span class ="imp"> without giving its implementation</span>.
     <br><br>
-    The most important advantage of inheritance is code reusability.
+    The most important advantage of inheritance is <span class="imp">code reusability.</span>
 </p>
 
 
 <p class="heading1" id="modi">Modes of Inheritance</p>
 <p class="para">
-    1. <b>Public mode</b>: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
+    <span class="imp">1. Public mode</span>: If we derive a sub class from a public base class. Then the public member of the base class will become public in the derived class and protected members of the base class will become protected in derived class.
     <br><br>
-    2. <b>Protected mode</b>: If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
+    <span class="imp">2. Protected mode</span> If we derive a sub class from a Protected base class. Then both public member and protected members of the base class will become protected in derived class.
     <br><br>
-    3. <b>Private mode</b>: If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
+    <span class="imp">3. Private mode</span> If we derive a sub class from a Private base class. Then both public member and protected members of the base class will become Private in derived class.
     <br><br>
     Note : The private members in the base class cannot be directly accessed in the derived class, while protected members can be directly accessed.
-    
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/inheritance.png') }}" alt="img1">
 
@@ -54,54 +50,54 @@
 <p class="para">
     There are five types of inheritance.
     <br> <br>
-    1. Single inheritance. <br>
-    2. Multiple inheritance. <br>
-    3. Hierarchical Inheritance. <br>
-    4. Multi-level inheritance. <br>
-    5. Hybrid Inheritance.
+    1. <span class="heading2">Single inheritance. </span><br>
+    2. <span class="heading2">Multiple inheritance. </span><br>
+    3. <span class="heading2">Hierarchical Inheritance. </span><br>
+    4. <span class="heading2">Multi-level inheritance. </span><br>
+    5. <span class="heading2">Hybrid Inheritance.</span>
 </p>
 
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/types_of_i.png') }}" alt="img1">
 
 <p class="heading2" id="singlei">1. Single Inheritance</p>
 <p class="para">
-    Single Inheritance enables a derived class to inherit properties and behavior from single parent class. <br>
-    One sub class is inherited by one base class only.
+    <span class="imp">Single Inheritance</span> enables a derived class to inherit properties and behavior from single parent class. <br>
+    <span class="code">One sub class</span> is inherited by <span class="code">one base class only.</span>
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/single_i.png') }}" alt="img1">
 
 <p class="heading2" id="multiplei">2. Multiple Inheritance</p>
 <p class="para">
-    When a subclass inherits from multiple base classes, it is known as Multiple Inheritance.
+    When a subclass inherits from <span class="code">multiple base classes</span>, it is known as <span class="imp">Multiple Inheritance.</span>
     <br><br>
-    For example: Amphibians is derived from Terrestrial and Aquatic animals. 
+    For example: <span class="code">Amphibians</span> is derived from Terrestrial and Aquatic animals. 
     <br>
     Frog can survive on land as well as water. <br><br>
 
     If the derived class need to access one of the same named member function of the base classes then it results in <span class="imp">ambiguity.</span> <br>
-    Ambiguity can be reolved by using scope resolution operator or using virtual base class. <br><br>
+    Ambiguity can be reolved by using <span class="code">scope resolution operator</span> or using <span class="code">virtual base class.</span> <br><br>
 
-    Note: Java <b>doesn't support</b> multiple inheritance.
+    Note: Java <span class="code">doesn't support</span> multiple inheritance.
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/multiple_i.png') }}" alt="img1">
 
 <p class="heading2" id="hieri">3. Hierarchical Inheritance</p>
 <p class="para">
-    If more than one class is inherited from the base class, it’s known as hierarchical inheritance. <br><br>
+    If <span class="code">more than one class</span> is inherited from the base class, it’s known as <span class="imp">Hierarchical inheritance.</span> <br><br>
     For example: Primary and Secondary colors are derived from Color base class.
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/hier_i.png') }}" alt="img1">
 
 <p class="heading2" id="multilvli">4. Multilevel Inheritance</p>
 <p class="para">
-    It is implemented by defining at least three classes. <br><br>
-    In Multilevel Inheritance, there is one base class and other two are derived class.
+    It is implemented by defining <span class="code">at least three classes.</span> <br><br>
+    In <span class="imp">Multilevel Inheritance</span>, there is one base class and other two are derived class.
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/multilvl_i.png') }}" alt="img1">
 
 <p class="heading2" id="hybridi">5. Hybrid Inheritance</p>
 <p class="para">
-    Inheritance hierarchy that reflects any legal combination of other four types of inheritance. <br><br>
+    <span class="imp">Hierarchical Inheritance</span> reflects any legal <span class="code">combination</span> of other four types of inheritance. <br><br>
     For example: Hierarchical inheritance + Multiple Inheritance
 </p>
 <img class="img-lg d-flex center" src="{{ url_for('static', filename='img/expt5/hybrid_i.png') }}" alt="img1">
