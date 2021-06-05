@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% block title %}
+Experiment
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/expt_layout.css') }}">
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/markdown.css') }}">
+
+<style>
+    .CodeMirror {
+      height: 300px;
+      font-size: 15px;
+      white-space: pre;
+      padding: 5px;
+    }
+</style>
+
+{% endblock head %}
+{% block body %}
+<h4 class=" text-center pt-2">{% block expt_title %}
+    {% endblock expt_title %}</h4>
+<ul class="nav justify-content-center border-bottom pb-2">
+    <li class="nav-item mx-5">
+        <button class="tablinks active" onclick="getTabContent(event, 'theory')">Theory</button>
+    </li>
+    <li class="nav-item mx-5">
+        <button class="tablinks" onclick="getTabContent(event, 'simulation')">Simulation</button>
+    </li>
+    <li class="nav-item mx-5">
+        <button class="tablinks" onclick="getTabContent(event, 'analysis')">Analysis</button>
+    </li>
+    <li class="nav-item mx-5">
+        <button class="tablinks" onclick="getTabContent(event, 'code_arena')">Code Arena</button>
+    </li>
+</ul>
+<div class="tabcontent container-fluid" style="display: block" id="theory">
+    <div class="d-flex w-100 h-100">
+        <div class="d-inline-block" style="border-right:1px solid lightgrey; width: 25%;">
+            <h5 class="gradient-head p-3 text-center">Table of Content</h5>
+            <div class="scroll-menu" style="max-height: 68vh; height:70vh">
+                <!-- For writing table of contents. -->
+                <!-- use unordered list (ul)  -->
+                <!-- <ul class="list-group-flush p-0 mx-2">
+                        <li class="list-group-item">topic 1</li>
+                        <li class="list-group-item">topic 2</li>
+                        </ul> -->
+                {% block toc %}
+
+                {% endblock toc %}
+            </div>
+        </div>
+
+       <div class="container-fluid scroll-menu" style="max-height: 75vh;height: 75vh; ">
+        <div class="" style="margin: 2% 5% 0% 5%;" >
+            {% block Theory %}
+
+            {% endblock Theory %}
+            </div>
+       </div>
+    </div>
+</div>
+<div class="tabcontent container text-center" id="simulation">
+    
+        
+    {% block Simulation %}
+
+    {% endblock Simulation %}
+
+  
+</div>
+<div class="tabcontent container-fluid scroll-menu" id="analysis"  style="max-height: 75vh;height: 75vh; ">
+    <div class="container">
+        <div class="" style="margin: 2% 5% 0% 5%;" >
+    {% block Analysis %}
+
+    {% endblock Analysis %}
+    </div>
+    </div>
+</div>
+<div class="tabcontent container-fluid scroll-menu" id="code_arena" style="max-height: 75vh;height: 75vh; ">
+    <div class="container">
+        {% block CodeArena %}
+
+    {% endblock CodeArena %}
+    </div>
+</div>
+
+
+<script>
+    function getTabContent(e, tabName) {
+
+        let tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        console.log(tabcontent)
+        for (let i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        console.log(tablinks)
+        for (let i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        e.currentTarget.className += " active"
+
+    }
+</script>
+{% endblock body %}

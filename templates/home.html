@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+
+  <!-- Highlight.js CSS for code highlighting -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/styles/default.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/vs2015.min.css">
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+
+  <!-- icon -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='logo.svg') }}" type="image/x-icon">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+
+  <script src="{{ url_for('static', filename='codemirror/lib/codemirror.js') }}"></script>
+
+  <!-- Themes -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='codemirror/lib/codemirror.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='codemirror/theme/material.css') }}">
+
+  <!-- Modes -->
+  <script src="{{ url_for('static', filename='codemirror/mode/clike/clike.js') }}"></script>
+  <script src="{{ url_for('static', filename='codemirror/mode/python/python.js') }}"></script>
+  <script src="{{ url_for('static', filename='codemirror/mode/javascript/javascript.js') }}"></script>
+
+  <!-- Addons -->
+  <script src="{{ url_for('static', filename='codemirror/addons/edit/closebrackets.js') }}"></script>
+  <script src="{{ url_for('static', filename='codemirror/addons/edit/matchbrackets.js') }}"></script>
+  <script src="{{ url_for('static', filename='codemirror/addons/active-line.js') }}"></script>
+
+  <!-- Axios -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+
+
+  <title>Virtual Labs | Home</title>
+</head>
+
+<body style="background-image: url({{ url_for('static', filename='img/Edisvg.png') }}); background-size: 35vw 100vh; background-repeat: no-repeat;">
+  <nav class="navbar navbar-light bg-light shadow bg-body rounded">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <span class="brand-name align-bottom"><img src="{{ url_for('static', filename='logo.svg') }}" alt="" width="65"
+            height="40" class="d-inline-block align-text-top">Virtual Labs</span>
+
+      </a>
+    </div>
+  </nav>
+    <div class=" d-flex container-fluid row mt-5">
+        <div class="container col-sm-5 offset-1 mt-5 ">
+            <div class="h-75 w-75 d-inline-block mt-5 ml-5 text-center">
+                <h1 class="heading-2">Welcome to </h1>
+                <h1 class=" heading-1 gradient-head my-2">Virtual Labs</h1>
+                <h6 class="heading-3 mt-4">One stop destination for coding geeks.<br>Gain CS concepts interactively.</h6>
+                <a href="/index" class="btn1 badge badge-dark mt-5">Get Started</a>
+            </div>
+        </div>
+        <div class="container col-sm-5">
+            <img class="svg_div" src="{{ url_for('static', filename='img/EDI-SVG.png') }}" alt="svg"> 
+        </div>
+    
+    </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- Highlight.js -->
+  <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@10.7.2/build/highlight.min.js"></script>
+</body>
+
+</html>

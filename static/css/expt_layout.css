@@ -1,0 +1,18 @@
+.tabcontent{
+    display: none;
+}
+
+.tablinks{
+    border: none;
+    background:transparent;
+    color: rgb(94, 59, 253);
+    padding: 4px 15px;
+    font-size: 1rem;
+    font-weight:500;
+}
+
+.active{
+    color: white;
+    background:linear-gradient(90deg, rgba(230,230,230,1) 0%, rgba(93,4,247,1) 34%, rgba(60,11,186,1) 51%, rgba(157,0,255,1) 100%);
+    border-radius: 15px;
+}
