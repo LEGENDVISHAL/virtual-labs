@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block head %}
-<link rel="stylesheet" href=" {{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+<link rel="stylesheet" href=" {{ url_for('static', filename='css/markdown.css') }}">
 {% endblock %}
 {% block title %}
 Index
@@ -19,19 +20,16 @@ Index
                     <p class="accordion-header" id="flush-headingOne">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                            Sorting Algorithms
+                            Data Structures
                         </button>
                     </p>
                     <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a onclick="showPreview(event)">Insertion Sort</a></li>
-                                <li class="list-group-item"><a onclick="showPreview(event)">Selection Sort</a></li>
-                                <li class="list-group-item"><a onclick="showPreview(event)">Bubble Sort</a></li>
-                                <li class="list-group-item"><a onclick="showPreview(event)">Radix Sort</a></li>
-                                <li class="list-group-item"><a onclick="showPreview(event)">Quick Sort</a></li>
-                            </ul>
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item heading2" onclick="showPreview(event, 0)" href="/expt/1">Insertion Sort</a>
+                                <a class="list-group-item heading2" onclick="showPreview(event, 1)" href="/expt/6">Path Finding Algorithms</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -40,16 +38,18 @@ Index
                     <p class="accordion-header" id="flush-headingTwo">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            Searching Algoritms
+                            Object Oriented Programming
                         </button>
                     </p>
                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
                         data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a onclick="showPreview(event)">Linear Search</a></li>
-                                <li class="list-group-item"><a onclick="showPreview(event)">Binary Search</a></li>
-                            </ul>
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item heading2" onclick="showPreview(event, 2)" href="/expt/3">Classes and Objects</a>
+                                <a class="list-group-item heading2" onclick="showPreview(event, 3)" href="/expt/4">Constructor and Destructor</span>
+                                <a class="list-group-item heading2" onclick="showPreview(event, 4)" href="/expt/5">Inheritance</a>
+                                <a class="list-group-item heading2" onclick="showPreview(event, 5)" href="/expt/7">Polymorphism</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -59,18 +59,15 @@ Index
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#flush-collapseThree" aria-expanded="false"
                             aria-controls="flush-collapseThree">
-                            Process Scheduling Algorithms
+                            Operating Systems
                         </button>
                     </p>
                     <div id="flush-collapseThree" class="accordion-collapse collapse"
                         aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><a id="exp1" onclick="showPreview(event)">FCFS</a></li>
-                                <li class="list-group-item"><a id="exp2" onclick="showPreview(event)">Round Robin</a></li>
-                                <li class="list-group-item"><a id="exp3" onclick="showPreview(event)">LRU</a></li>
-                                
-                            </ul>
+                            <div class="list-group list-group-flush">
+                                <a class="list-group-item heading2" onclick="showPreview(event, 6)" href="/expt/2">Process Scheduling Algorithms</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -82,23 +79,41 @@ Index
     <div class="w-50 border-success scroll-menu" style="max-height: 80vh;height: 80vh; margin-left: 10%;">
         <div class="" id="preview" style="padding: 70px 10px">
             <div class="alert alert-primary text-center">select experiment to show preview.</div>
-           
+
 
         </div>
     </div>
 </div>
 
 <script>
-   function showPreview(e){
-       item_id = e.target.id
-       console.log(item_id)
-       document.getElementById("preview").innerHTML = 
-           `<h5 class="text-center my-4">${e.target.innerText}</h5>
-           <p>Insertion sort is one of the sorting algorithms. To sort the elements in array in ascending or descending Insertion sort can be used.<br>
-Principle of Insertion Sort<br>
-The array is divided in two parts (not actually) left part is sorted and right part is unsorted. <br>By Iterating from left to right and moving our line which divides to right we make whole array sorted.</p>
-           <a class="btn1 badge mt-5 offset-7" href="/expt" >Start Experiment ></a>`
-   }
+    let desc = [
+        `Insertion sort is one of the sorting algorithms.<br>To sort the elements in array in <span class="imp">ascending or descending</span> Insertion sort can be used. <br> The array is divided in two parts <span class="italic">(not actually)</span> left part is <span class="code">sorted</span> and right part is <span class="code"> unsorted.</span>'`,
+        `<span class="imp"> Pathfinding or pathing</span> is the plotting, by a computer application, of the shortest route between two points. It is a more practical variant on solving mazes. <br><br> This field of research is based heavily on <span class="code">Dijkstras algorithm</span> for finding the shortest path on a weighted graph. <br><br> Dijkstra doesn’t work for Graphs with negative weight edges, <span class="code"> Bellman-Ford</span> works for such graphs.`,
+        `<span class="imp">Classes and objects</span> are the <span class="imp">basic building blocks</span> of object-oriented programming. <br> <br>
+                                    Earlier <span class="code">structures</span> were used to define <span class="code"> data types</span> in the C language. <br>
+                                    For example, to represent a complex number, structure of real number and the imaginary number is made. Functions for operations on complex number are written <span class="imp">separately.</span>&nbsp;<br> <br>
+                                    So to make things easier and keep related code in some <span class="imp">wrapper</span>. So Object-oriented programming came into the picture in which <span class="imp">class</span> is the same as structure but with more advanced features.`,
+        `Constructors are the special methods that are <span class="imp">called or invoked automatically</span> when the object of the class is created. <br> <img class="img-sm d-flex center" src="{{ url_for("static", filename="img/expt4/img1.png") }}" alt="img2">`,
+        `The capability of a class to derive properties and characteristics from another class is called <span class="imp">Inheritance</span>. It is one of the most important feature of Object Oriented Programming. One of the pillar of OOPS. <br> <br>
+                                        <span class="imp">Child or Sub or Derived class</span> : The class that inherits properties from another class is called Sub class or Derived Class. <br><br>
+                                        <span class="imp">Parent or Super or Base Class</span> : The class whose properties are inherited by sub class is called Base Class or Super class.`,
+        `The word <span class="code">Polymorphism</span> is consist of <span class="imp">Poly + morphs </span> which means <span class="imp">Many + Forms</span>.
+                                        A real-life example of  polymorphism, a <span class="imp">student</span> at the same time can have different characteristics, like a <span class="imp">Boy</span> at the same time is a <span class="imp">student</span>, a <span class="imp">son</span>,or a <span class="imp">worker</span>.
+                                         So we can say that the same <span class="imp"> person</span> may have different behavior in different situations. This terminology is  called polymorphism.
+                                        Polymorphism is known as one of the <span class="imp">important features</span> of Object Oriented Programming.`,
+        `In a system there are numerous processes present in different different states at a particular time. <br>
+                                Some processes may be in <span class="imp"> waiting state</span>, while others may be in <span class="imp">running states</span> etc. <br>
+                                But here the question arises how CPU selects one process from many for execution??<br>The answer is CPU uses <span class="imp">Process Scheduling Algorithms</span> for execution of processes.`
+    ];
+    function showPreview(e, idx) {
+        e.preventDefault();
+        item_id = e.target.id
+        console.log(item_id)
+        document.getElementById("preview").innerHTML =
+            `<h5 class="text-center my-4">${e.target.innerText}</h5>
+           <p>${desc[idx]}</p>
+           <a class="btn2 badge mt-5 offset-7" href="${e.target.href}" >Start Experiment ></a>`
+    }
 </script>
 
 {% endblock %}
