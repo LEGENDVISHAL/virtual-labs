@@ -322,25 +322,23 @@ int main()
     let expt = "Path Finding Algorithms";
     let problems = [
         {
-            "title": "1. Completion time of Processes",
-            "desc": '<p class="para">Create a class named <span class="code">Aeroplane</span> .<br><br>Print the output as <span class="code">"Aeroplane is Flying"</span> whenever an object is created.<br><br>Use the <span class="imp">default constructor</span> to acheive the result.</p>',
-            "inputs": ["No Input"],
-            "outputs": ["Aeroplane is Flying"]
+            "title": "1. Shortest Path using Dijkstra's Algorithm",
+            "desc": '<p class="para"><br>Given an <span class="imp">undirected weighted graph</span> and a starting node,<br>Print the <span class="code">lengths</span> of the shortest paths from the<span class="code">starting node</span> to all other nodes in the graph.<br><br>If a node is unreachable, its distance is <span class="code">-1</span>.<br>Nodes will be numbered consecutively from <span class="code">1 to n</span> , and edges will have varying distances or lengths.</p>',
+            "inputs": ["4 4","1 2 24","1 4 2","3 1 3","4 3 12","1"],
+            "outputs": ["24 3 15"]
         },
         {
-            "title": "2. Circles and Rectangles",
-            "desc": '<p class="para">Make a class called <span class="code">Shape</span> .<br><br>Use the same class to take the <span class="code">length</span> and <span class="code">breadth</span> of rectangle and <span class="code">radius</span> in case of circle.<br><br> Make use of <span class="imp">parameterized constructors</span> to take the dimensions based on number of parameters.<br>Input is given as length, breadth and radius respectively.<br><br>Print the area of circle and rectangle as given in the output. Round off answer to 2 decimals. ( <span class="code">π = 3.142</span> )</p>',
-            "inputs": ["4 5 6","23 12 8"],
-            "outputs": ["rectArea: 20, circleArea: 113.09","rectArea: 276, circleArea: 201.06"]
+            "title": "2. Shortest Path using Bellman Ford Algorithm",
+            "desc": '<p class="para">You are given an <span class="imp">directed weighted graph</span>.<br>Graph may contain <span class="imp">negative edges</span> and doesn’t contain any <span class="code">negative edge cycles</span> .<br><br>Find the <span class="imp">shortest path</span> between source vertex to all vertices and if a vertex is unreachable from source vertex then print <span class="code">“Impossible”</span> otherwise print the shortest distance between them.</p>',
+            "inputs": ["5 8","1 2 3","3 2 5","1 3 2","3 1 1","1 4 2","0 2 4","4 3 -3","0 1 -1","0"],
+            "outputs": ["0 -1 2 -2 1"]
         },
-        {
-            "title": "3. Xerox machine 🖨️",
-            "desc": '<p class="para">Suppose you have a <span class="imp">Xerox machine</span> which copies text from one sheet of paper to other.<br><br>Create a class <span class="code">Paper</span> which has data member <span class="code">text</span>.<br><br>Make use of the <span class="imp">copy constructor</span> to simulate the copying of paper objects using xerox machine.<br><br>Copy the text of paper1 to paper2 as shown in the output.</p>',
-            "inputs": ["paper1, this is the text for paper1"],
-            "outputs": ["paper2, this is the text for paper1"]
-        }
     ];
 </script>
 
 <script src="{{ url_for('static', filename='js/code_arena.js') }}"></script>
 {% endblock CodeArena %}
+
+
+
+

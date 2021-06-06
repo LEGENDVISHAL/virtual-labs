@@ -55,102 +55,104 @@
 
 <p class="heading1" id="implement">Implementation</p>
 <p class="heading2" id="cpp_imple">C++ implementation</p>
-<pre><code class="language-cpp center" >#include &lt;iostream&gt;
-        using namespace std;
+<pre><code class="language-cpp center" >
+#include &lt;iostream&gt;
+using namespace std;
+
+// Insertion sort function
+void Insertion_Sort(int arr[], int n)
+{
+    int i, j, cur;
+    // Iterate thorugh array
+    for (i = 1; i &lt; n; i++)
+    {
+        // Store current element in cur
+        cur = arr[i];
         
-        // Insertion sort function
-        void Insertion_Sort(int arr[], int n)
+        // Iterating variable for finding
+        // correct position of current element
+        j = i - 1;
+
+        // Iterate on behind the current element
+        // Until we reach start of array or arr[j]&gt;cur
+        while (j &gt;= 0 &amp;&amp; arr[j] &gt; cur)
         {
-            int i, j, cur;
-            // Iterate thorugh array
-            for (i = 1; i &lt; n; i++)
-            {
-                // Store current element in cur
-                cur = arr[i];
-                
-                // Iterating variable for finding
-                // correct position of current element
-                j = i - 1;
-        
-                // Iterate on behind the current element
-                // Until we reach start of array or arr[j]&gt;cur
-                while (j &gt;= 0 &amp;&amp; arr[j] &gt; cur)
-                {
-                    // Each step assign arr[j] to arr[j+1]
-                    // i.e. move element ahead
-                    arr[j + 1] = arr[j];
-                    
-                    // Decrement j
-                    j--;
-                }
-        
-                // We found correct position for cur
-                // i.e j+1 so assign that to cur
-                arr[j + 1] = cur;
-            }
+            // Each step assign arr[j] to arr[j+1]
+            // i.e. move element ahead
+            arr[j + 1] = arr[j];
+            
+            // Decrement j
+            j--;
         }
-        
-        // Display array function 
-        void Display_Array(int arr[], int n)
-        {
-            cout&lt;&lt;&quot;Displaying Array...    : &quot;;
-            for (int i = 0; i &lt; n; i++)
-                cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
-            cout &lt;&lt; endl;
-        }
-        
-        // Main Function
-        int main()
-        {
-            // Sample array we can take input from user also
-            int arr[] = {6, 2, 3, 5, 9, 8, 1};
-        
-            // Number of elements
-            int n = sizeof(arr) / sizeof(arr[0]);
-        
-            // Displaying array before sorting
-            Display_Array(arr, n);
-        
-            // Calling function insertion sort
-            Insertion_Sort(arr, n);
-        
-            // Displaying array after sorting
-            Display_Array(arr, n);
-        
-            return 0;
-        }</code></pre>
+
+        // We found correct position for cur
+        // i.e j+1 so assign that to cur
+        arr[j + 1] = cur;
+    }
+}
+
+// Display array function 
+void Display_Array(int arr[], int n)
+{
+    cout&lt;&lt;&quot;Displaying Array...    : &quot;;
+    for (int i = 0; i &lt; n; i++)
+        cout &lt;&lt; arr[i] &lt;&lt; &quot; &quot;;
+    cout &lt;&lt; endl;
+}
+
+// Main Function
+int main()
+{
+    // Sample array we can take input from user also
+    int arr[] = {6, 2, 3, 5, 9, 8, 1};
+
+    // Number of elements
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    // Displaying array before sorting
+    Display_Array(arr, n);
+
+    // Calling function insertion sort
+    Insertion_Sort(arr, n);
+
+    // Displaying array after sorting
+    Display_Array(arr, n);
+
+    return 0;
+}</code></pre>
 
 <p class="heading2" id="python_imple">Python implementation</p>
 
-<pre><code class="language-python center"># Insertion sort function
-            def Insertion_Sort(arr,n):
-                for i in range(1,n):
-                    cur = arr[i]
-                    j = i - 1
-                    while (j &gt;= 0 and arr[j] &gt; cur):
-                        arr[j + 1] = arr[j]
-                        j-=1
-                    arr[j + 1] = cur
-            
-            # Display array function 
-            def Display_Array(arr,n):
-                print(&quot;Displaying Array...    : &quot;,end=&quot;&quot;)
-                for i in range(n):
-                    print(arr[i],end=&quot; &quot;)
-                print()
-            
-            # Main program
-            arr = [6, 2, 3, 5, 9, 8, 1]
-            n = len(arr)
-            
-            # Displaying array before sorting
-            Display_Array(arr, n)
-            
-            # Calling function insertion sort
-            Insertion_Sort(arr, n)
-            
-            # Displaying array after sorting
-            Display_Array(arr, n)</code></pre>
+<pre><code class="language-python center">
+# Insertion sort function
+def Insertion_Sort(arr,n):
+    for i in range(1,n):
+        cur = arr[i]
+        j = i - 1
+        while (j &gt;= 0 and arr[j] &gt; cur):
+            arr[j + 1] = arr[j]
+            j-=1
+        arr[j + 1] = cur
+
+# Display array function 
+def Display_Array(arr,n):
+    print(&quot;Displaying Array...    : &quot;,end=&quot;&quot;)
+    for i in range(n):
+        print(arr[i],end=&quot; &quot;)
+    print()
+
+# Main program
+arr = [6, 2, 3, 5, 9, 8, 1]
+n = len(arr)
+
+# Displaying array before sorting
+Display_Array(arr, n)
+
+# Calling function insertion sort
+Insertion_Sort(arr, n)
+
+# Displaying array after sorting
+Display_Array(arr, n)</code></pre>
 
 
 
