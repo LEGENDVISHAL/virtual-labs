@@ -8,17 +8,14 @@ Each Experiment have 4 tabs--
 4. Code Arena  : It has coding question, input and output test case and coding
                  environment in which code can be written and run using Piston API.
 
-There are 7 experiments 
+There are 7 experiments on Data Structure and Algorithms, Object Oriented Programming and Operating System.
 
--> Data Structure and Algorithms
 1. Insertion Sort
 2. Path Finding Algorithm
--> Object Oriented Programming
 3. Classes and Objects
 4. Construtor and Destructor
 5. Inheritance
 6. Polymorphism
--> Operating System
 7. Process Scheduling Algorithms
 
 Deployed Web : 
