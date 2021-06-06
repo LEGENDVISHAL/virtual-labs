@@ -13,13 +13,11 @@ There are 7 experiments
 -> Data Structure and Algorithms
 1. Insertion Sort
 2. Path Finding Algorithm
-
 -> Object Oriented Programming
 3. Classes and Objects
 4. Construtor and Destructor
 5. Inheritance
 6. Polymorphism
-
 -> Operating System
 7. Process Scheduling Algorithms
 
