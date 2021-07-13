@@ -8,7 +8,7 @@
 ---
 ### Need of the project :
 #### &nbsp;&nbsp;&nbsp;&nbsp;Virtual Labs is an initiative to enhance the online learning experience of CS students especially, by providing interactive **simulations** and **visualizations**. There are many virtual labs available which are created by IIT and NITs, but for most of their labs `Adobe Flash Player` is used to run the simulations which is deprecated and not compatible with the web now-a-days.
-#### &nbsp;&nbsp;&nbsp;&nbsp;taking all this into consideration, we decided to make simulations for the core CS topics like **Data Structures & Algorithms, Object Oriented Programming and Operating System.**
+#### &nbsp;&nbsp;&nbsp;&nbsp;taking all this into consideration, we decided to make simulations for the core CS topics like **Data Structures & Algorithms, Object Oriented Programming and Operating System.** `p5.js` is an interactive and modern javascript graphics library used for games and animations. p5 was used for making the simulations in this project.
 
 ### Topics Covered :
 | Subject           | Topic                                                                    |
@@ -22,6 +22,7 @@ Backend
 - [Flask]
 
 Frontend
+- [p5.js] graphics library for animations.
 - [Bootstrap 4]
 - [Jinja] templating
 - [CodeMirror] API (for the awesome code editor.)
@@ -57,6 +58,7 @@ Links
 [Bootstrap 4]: <https://getbootstrap.com/>
 [Jinja]: <https://jinja.palletsprojects.com/en/2.11.x/>
 [CodeMirror]: <https://codemirror.net/>
+[p5.js]: <https://p5js.org/>
 
 
 
