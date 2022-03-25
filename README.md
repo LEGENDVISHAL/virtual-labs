@@ -26,6 +26,7 @@ Frontend
 - [Bootstrap 4]
 - [Jinja] templating
 - [CodeMirror] API (for the awesome code editor.)
+- [Chart.js] library for displaying graphs (bar, line, pie charts and many more)
 
 ### Some Screenshots :
 ##### _**Index page** of the platform which displays all the experiments in a neat mannner._
@@ -59,6 +60,7 @@ Links
 [Jinja]: <https://jinja.palletsprojects.com/en/2.11.x/>
 [CodeMirror]: <https://codemirror.net/>
 [p5.js]: <https://p5js.org/>
+[Chart.js]: <https://www.chartjs.org/>
 
 
 
