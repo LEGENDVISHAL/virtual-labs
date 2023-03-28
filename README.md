@@ -45,7 +45,7 @@ Frontend
 2. Vishal Thoke -      [LEGENDVISHAL](https://github.com/LEGENDVISHAL)
 3. Utsav Patel -       [utsavp525](https://github.com/utsavp525)
 4. Sushant Vaidkar -   [sushantvaidkar](https://github.com/sushantvaidkar)
-5. Vedant Valsangkar - [VedantValsangkar](https://github.com/VedantValsangkar)
+5. Vedant Valsangkar - [vedantvalsangkar](https://github.com/vedantvalsangkar)
  
 
 
