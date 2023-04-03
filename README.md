@@ -1,7 +1,7 @@
 # **Virtual Labs** 💻📊
 ### An online platform containing simulations for different CS concept. Learn by visualizations at no cost.
 ##### Contains `Theory` , `Simulation` , `Analysis` , `Code Arena` tabs for each topic covered, to get in-depth understanding and hands on practise.
-> **Website :** [Virtual Labs](https://virtual-labs.onrender.com/ "Virtual Labs India")
+> **Website :** [Virtual Labs](https://virtual-labs-india.onrender.com/ "Virtual Labs India")
 ---
 ### Landing Page :
 ![ss1](https://github.com/LEGENDVISHAL/images/blob/main/virtual-labs/ss1.png)
